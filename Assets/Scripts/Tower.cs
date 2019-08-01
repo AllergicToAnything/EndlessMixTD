@@ -18,8 +18,11 @@ public class Tower : MonoBehaviour
     public GameObject[] orb;
     public List<Bullet> allOrbs = new List<Bullet>();
     public float cd;
-    public float attackCooldown = 1.1f;
+    public float attackCooldown = 1f;
     public Detector detector;
+    public int towerLevel = 1;
+    public int cost = 1;
+    public float miniStunDur = .05f;
 
 
     private void OnEnable()
@@ -71,6 +74,8 @@ public class Tower : MonoBehaviour
         if(cd < 0) { cd = 0; } 
         if (ableToAttack == true && cd == 0)
         {
+            if(attackCooldown <=0)
+            { attackCooldown = .001f; }
             GameObject towerOrb;
             if (platform.elements == Element.Fire)
             {
@@ -92,6 +97,7 @@ public class Tower : MonoBehaviour
                 towerOrb = Instantiate(orb[3], this.transform.position, this.transform.rotation);
                 allOrbs.Add(towerOrb.GetComponent<Bullet>());
             }
+            
             cd = attackCooldown;
             curTarget = target;
         } // Choose Attack Orb to Instantiate
@@ -99,8 +105,17 @@ public class Tower : MonoBehaviour
             foreach (Bullet bullet in allOrbs)
             {
                 bullet.detector = detector;
-            }
+                
+        }
     }
+
+   public void LevelUP()
+    {
+        towerLevel++;
+        cost= towerLevel*2;
+    }
+
+
 
     // Upgrade to level 2
 

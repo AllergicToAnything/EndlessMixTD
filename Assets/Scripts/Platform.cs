@@ -13,10 +13,13 @@ public class Platform : MonoBehaviour
     public Tower tower;
     public Element elements = Element.None;
     public bool isOccupied;
+    Detector detector;
+    public Spawner spawner;
 
     private void OnEnable()
     {
         isOccupied = false;
+        detector = tower.GetComponent<Detector>();
     }
 
     private void Update()
@@ -45,8 +48,32 @@ public class Platform : MonoBehaviour
 
     }
 
-  
+    public void TowerElementAttribute()
+    {
+        if(elements == Element.Fire)
+        {
+            tower.attackCooldown *= .5f-.01f*tower.towerLevel;
+            detector.damage*=.5f*tower.towerLevel;
+        }
+        if (elements == Element.Electric)
+        {
+            tower.attackCooldown *= .2f - .01f * tower.towerLevel;
+            detector.damage *= .2f * tower.towerLevel;
+            
+        }
+        if (elements == Element.Ice)
+        {
+            tower.attackCooldown *= 1.5f - .01f * tower.towerLevel;
+            detector.damage *= .5f * tower.towerLevel;
+        }
+        if (elements == Element.Poison)
+        {
+            tower.attackCooldown *= .8f - .01f * tower.towerLevel;
+            detector.damage *= 2f * tower.towerLevel;
+        }
+    }
 
-    
-  
+
+
+
 }

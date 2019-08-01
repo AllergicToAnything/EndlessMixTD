@@ -59,6 +59,7 @@ public class BuildingTowerManager : MonoBehaviour
             _confirmUI.gameObject.SetActive(false);
             _elementalSelection.gameObject.SetActive(true);
             
+            
         }
     }
 
@@ -83,7 +84,9 @@ public class BuildingTowerManager : MonoBehaviour
                 platform.tower.BuildTower();
                 UISwitchButton();
             }
+            platform.TowerElementAttribute();
             gold -= 1;
+
         }
     }
     public void ElectricButton()
@@ -99,6 +102,7 @@ public class BuildingTowerManager : MonoBehaviour
                 platform.tower.BuildTower();
                 UISwitchButton();
             }
+            platform.TowerElementAttribute();
             gold -= 1;
         }
     }
@@ -114,7 +118,9 @@ public class BuildingTowerManager : MonoBehaviour
                 mc.ChangeMatToIce();
                 platform.tower.BuildTower();
                 UISwitchButton();
+                
             }
+            platform.TowerElementAttribute();
             gold -= 1;
         }
     }
@@ -130,6 +136,7 @@ public class BuildingTowerManager : MonoBehaviour
                 platform.tower.BuildTower();
                 UISwitchButton();
             }
+            platform.TowerElementAttribute();
             gold -= 1;
         }
     }   

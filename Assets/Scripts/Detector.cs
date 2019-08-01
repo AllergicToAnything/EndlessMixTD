@@ -5,19 +5,12 @@ using UnityEngine;
 public class Detector : Unit
 {
     Tower tower;
-    bool hasTarget;
     public List<GameObject> invader = new List<GameObject>();
+    
 
     private void Update()
     {
-       if(tower.target != null)
-        {
-            hasTarget = true;
-        }
-        else
-        {
-            hasTarget = false;
-        }
+       
         
     }
 

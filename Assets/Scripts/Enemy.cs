@@ -8,25 +8,61 @@ public class Enemy : Unit
     NavMeshAgent agent;
     public Transform target;
     LineRenderer lineRenderer;
-    public bool isStunned;
+
     public LevelManager lvlManager;
     public float velocity;
     public float rayLength = .5f;
+    public Spawner spawner;
+    public bool isStunned = false;
+    public bool isSlowByIce = false;
+    public bool isSlowByPoison = false;
+    public float curSpeed;
+    public float stunCD;
 
-    //public GameObject bullet;
     void Start()
     {
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
+        curSpeed = GetComponent<NavMeshAgent>().speed;
     }
 
+    public void Stunned(float stunDuration)
+    {
+        stunCD = stunDuration;
+
+        if (isStunned == true)
+        {
+            
+            GetComponent<NavMeshAgent>().speed = 0f;            
+            
+        }
+        if (isStunned == false)
+        {
+            GetComponent<NavMeshAgent>().speed = curSpeed;
+            
+        }
+    }
+
+    //public GameObject bullet;
+    
+  
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
+        if (stunCD > 0) { stunCD -= Time.deltaTime; }
+        if (isStunned == true)
+        {
+            GetComponent<NavMeshAgent>().speed = 0f;
+        }
+        if (isStunned == false)
+        {
+            GetComponent<NavMeshAgent>().speed = curSpeed;
+        }
+
+            Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
         agent.SetDestination(target.position);
-        if(velocity == 0)
+        if(velocity == 0 && agent.speed !=0)
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, Vector3.forward);
@@ -38,30 +74,31 @@ public class Enemy : Unit
       
     }
 
+    public new void TakeDamage(float damageAmount)
+    {
+        hp -= damageAmount;
+        if (hp <= 0) { spawner.killCount++; Destroy(this.gameObject); } // Die
+    }
+
    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(other.gameObject.GetComponent<Bullet>().bulletDamage);
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  ");   
+            TakeDamage(bullet.bulletDamage);
+            if (bullet.thisElement == Element.Electric) {
+                isStunned = true;
+                if (stunCD <= 0) { stunCD = 0; }
+                if (stunCD == 0)
+                { isStunned = false; }
+                Stunned(bullet.detector.GetComponent<Tower>().miniStunDur); }
+            
             other.gameObject.SetActive(false);   
         }
     }
-
-    
-
-    
-
-    /*  private void OnCollisionEnter(Collision collision)
-      {
-          if(collision.gameObject.tag == "Bullet")
-          {
-              print("Bulleted");
-              Destroy(collision.gameObject);
-          }
-      }*/
-
 
     /*
       void GetPathLine()
@@ -91,5 +128,8 @@ public class Enemy : Unit
     // Destroy this when Prepare Phase
 
     // Raycast a ray to detect the tower, when the velocity = 0 it will attack an obsticle to pass through the tower if it's not stunned
+
+
+
 
 }
