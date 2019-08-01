@@ -19,8 +19,6 @@ public class Enemy : Unit
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
-
-        
     }
 
     void Update()
@@ -40,24 +38,18 @@ public class Enemy : Unit
       
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            TakeDamage(collision.gameObject.GetComponent<Bullet>().bulletDamage);
-            
-        }
-    }
+   
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(other.gameObject.GetComponent<Bullet>().bulletDamage);
-            other.gameObject.SetActive(false);
-
+            other.gameObject.SetActive(false);   
         }
     }
+
+    
 
     
 

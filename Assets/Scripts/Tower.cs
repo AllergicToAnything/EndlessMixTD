@@ -42,9 +42,6 @@ public class Tower : MonoBehaviour
         }
     }
 
-   
-    
-
     void AttackCondition()
     {
         if (platform.towerStates == State.B)

@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : Unit
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.CompareTag("Invader"))
+        {
+            hp -= 1;
+            Destroy(other.gameObject);
+            if(this.hp <= 1) { Destroy(this.gameObject); }
+            
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Shield = HP
     // destroy this when hp = 1
 }

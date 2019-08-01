@@ -12,6 +12,7 @@ TagManager:
   - BaseWell
   - Energy
   - Bullet
+  - Barrier
   layers:
   - Default
   - TransparentFX

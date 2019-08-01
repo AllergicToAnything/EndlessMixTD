@@ -11,24 +11,23 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        
         Invoke("Delay", 0.001f);
-        
     }
 
     void Delay()
     {
-        
-        if (detector.invader.Count>0)
+        if (detector.invader.Count > 0)
         {
-            if (detector.invader[0])
+            if (detector.invader[0] == null)
+            {
+                detector.invader.RemoveAt(0);
+            }
+            else
             {
                 target = detector.invader[0].transform;
                 bulletDamage = detector.damage;
             }
         }
-
-        
     }
 
     private void Update()
