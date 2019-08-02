@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed = 10f;
     Transform target;
     public float bulletDamage;
-    public float decayTime = 3f;
+    public float decayTime = 1f;
     public Element thisElement;
 
     private void OnEnable()

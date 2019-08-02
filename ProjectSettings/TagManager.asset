@@ -13,6 +13,7 @@ TagManager:
   - Energy
   - Bullet
   - Barrier
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

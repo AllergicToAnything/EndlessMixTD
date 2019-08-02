@@ -11,9 +11,13 @@ public class LevelManager : MonoBehaviour
     public Spawner spawner;
     public float prebattleCD = 5f;
     public float PrepareCD = 30f;
-    public float pbcd;
-    public float pcd;
-    public float gameSpeed;
+
+    [SerializeField]
+    private float pbcd;
+    [SerializeField]
+    private float pcd;
+
+    public float gameSpeed = 1;
 
     void OnEnable()
     {
@@ -22,6 +26,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = gameSpeed;
         pbcd = prebattleCD;
         pcd = PrepareCD;
+        print("Prepare Phase");
     }
 
     // Update is called once per frame
@@ -29,17 +34,19 @@ public class LevelManager : MonoBehaviour
     {
         if(curPhase == Phase.Prepare)
         {
+            
             PreparationCountdown();
         }
         if(curPhase == Phase.Prebattle)
         {
+            
             ToBattlePhase();
         }
 
         if(curPhase == Phase.Battle)
         {
-            spawner.StartSpawning();
             
+            spawner.StartSpawning();
         }
 
     }
@@ -51,6 +58,8 @@ public class LevelManager : MonoBehaviour
         if(pcd == 0)
         {
             pcd = PrepareCD;
+            print("Prebattle Phase");
+            print("Current Level: " + curLevel.ToString());
             curPhase = Phase.Prebattle;
             
         }
@@ -63,6 +72,7 @@ public class LevelManager : MonoBehaviour
         if (pbcd == 0)
         {
             pbcd = prebattleCD;
+            print("Battle Phase");
             curPhase = Phase.Battle;
             
         }

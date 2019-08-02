@@ -19,12 +19,15 @@ public class Enemy : Unit
     public float curSpeed;
     public float stunCD;
 
+    public GameObject bullet;
+
     void Start()
     {
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
         curSpeed = GetComponent<NavMeshAgent>().speed;
+        hp += hp * lvlManager.curLevel;
     }
 
     public void Stunned(float stunDuration)
@@ -49,35 +52,57 @@ public class Enemy : Unit
   
     void Update()
     {
-        if (stunCD > 0) { stunCD -= Time.deltaTime; }
-        if (isStunned == true)
-        {
-            GetComponent<NavMeshAgent>().speed = 0f;
-        }
-        if (isStunned == false)
-        {
-            GetComponent<NavMeshAgent>().speed = curSpeed;
-        }
+        CheckStunned();        
 
-            Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
         agent.SetDestination(target.position);
-        if(velocity == 0 && agent.speed !=0)
-        {
-            RaycastHit hit;
-            Ray ray = new Ray(transform.position, Vector3.forward);
-            if(Physics.Raycast(ray,out hit, rayLength))
-            {
-                print("hi");
-            }
-        }
+
+        Invoke("CheckObstacles",2f);
       
     }
+
+    public void CheckObstacles()
+    {
+        RaycastHit hit;
+
+        Ray ray = new Ray(transform.position, Vector3.forward);
+        if (Physics.Raycast(ray, out hit, rayLength))
+        {
+            if (this.velocity == 0)
+            {
+                if (this.isStunned == false)
+                {
+                    Invoke("CheckStun", 2f);
+                }
+            }
+        }
+    }
+
+    public void CheckStun()
+    {
+        if(this.velocity == 0)
+        {
+            StartCoroutine(CheckStun2());
+        }
+    }
+
+    IEnumerator CheckStun2()
+    {
+        yield return new WaitForSeconds(5f);
+        if (this.velocity == 0&& this.isStunned == false)
+        {
+            print("Obsticle Detected");
+            Instantiate(bullet, this.transform.position, this.transform.rotation);
+        }
+    }
+
+    
 
     public new void TakeDamage(float damageAmount)
     {
         hp -= damageAmount;
-        if (hp <= 0) { spawner.killCount++; Destroy(this.gameObject); } // Die
+        if (hp <= 0) { spawner.killCount++;  spawner.debugCount++; Destroy(this.gameObject); } // Die
     }
 
    
@@ -87,16 +112,32 @@ public class Enemy : Unit
         if (other.gameObject.CompareTag("Bullet"))
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  ");   
+            if (bullet != null) { print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  "); print(name + "\n HP: " + hp.ToString());  }
+            
             TakeDamage(bullet.bulletDamage);
-            if (bullet.thisElement == Element.Electric) {
+            if (bullet.thisElement == Element.Electric)
+            {
                 isStunned = true;
-                if (stunCD <= 0) { stunCD = 0; }
-                if (stunCD == 0)
-                { isStunned = false; }
-                Stunned(bullet.detector.GetComponent<Tower>().miniStunDur); }
+                Stunned(bullet.detector.GetComponent<Tower>().miniStunDur);
+            }
             
             other.gameObject.SetActive(false);   
+        }
+    }
+
+    public void CheckStunned()
+    {
+        if (stunCD > 0) { stunCD -= Time.deltaTime; }
+        if (stunCD <= 0) { stunCD = 0; }
+        if (stunCD == 0)
+        { isStunned = false; }
+        if (isStunned == true)
+        {
+           GetComponent<NavMeshAgent>().speed = 0f;
+        }
+        if (isStunned == false)
+        {
+            GetComponent<NavMeshAgent>().speed = curSpeed;
         }
     }
 

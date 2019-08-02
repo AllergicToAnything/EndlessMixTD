@@ -17,6 +17,7 @@ public class Detector : Unit
     private void OnEnable()
     {
         tower = this.gameObject.GetComponent<Tower>();
+        hp = 1;
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,9 +25,7 @@ public class Detector : Unit
         
         if (other.gameObject.tag == "Invader")
         {
-            
            invader.Add(other.gameObject);
-            //tower.target = other.gameObject;
         }
         
     }
@@ -47,6 +46,12 @@ public class Detector : Unit
             invader.RemoveAt(0);
             
         }
+    }
+
+    public new void TakeDamage(float damageAmount)
+    {
+        hp -= damageAmount;
+        if (hp <= 0) { tower.platform.towerStates = State.I; tower.platform.elements = Element.None; tower.thisElement = Element.None; this.gameObject.SetActive(false);  } // Die
     }
 
     }

@@ -12,15 +12,20 @@ public class Spawner : MonoBehaviour
     public float spawnRate = 3;
     public int spawnLimitPerLevel = 20;
     public int spawnCount = 0;    
-    public int addSpawnLimitEvery = 5;
+    public int addSpawnLimitEveryLevel = 5;
     public int slcd;
     GameObject go;
     public int killCount = 0;
 
+    public int debugCount = 0;
+    public bool countLock = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        slcd = addSpawnLimitEvery -1;
+        slcd = addSpawnLimitEveryLevel -lvlManager.curLevel;
+        spawnCount = 0;
+
     }
 
     // Update is called once per frame
@@ -47,19 +52,21 @@ public class Spawner : MonoBehaviour
             {
                 if (go!=null)
                 {
-                    go.GetComponent<Enemy>().hp += go.GetComponent<Enemy>().hp * lvlManager.curLevel;
+                    
                     go.GetComponent<Enemy>().spawner = this;
                 }                
             }
         }
-        if (allInvaders.Count > spawnLimitPerLevel - 1)
+        if (spawnCount == spawnLimitPerLevel && lvlManager.curPhase == Phase.Battle)
         {
             foreach (GameObject go in allInvaders)
             {
-                if (!go)
+                
+                if (debugCount==spawnLimitPerLevel)
                 {
                     StartCoroutine(LevelClear());
                 }
+                
             }
         } 
     }
@@ -67,14 +74,9 @@ public class Spawner : MonoBehaviour
     IEnumerator LevelClear()
     {
         yield return new WaitForSeconds(5);
-        if (allInvaders.Count > spawnLimitPerLevel - 1 && lvlManager.curPhase==Phase.Battle)
+        if (lvlManager.curPhase == Phase.Battle)
         {
-            
-            lvlManager.curLevel++;
-            spawnCount = 0;
-            allInvaders.Clear();
-            
-            if(killCount >= spawnLimitPerLevel)
+            if (killCount >= spawnLimitPerLevel)
             {
                 manager.gold++;
             }
@@ -91,13 +93,13 @@ public class Spawner : MonoBehaviour
             {
                 manager.gold += (lvlManager.curLevel + 6);
             }
-            else if(lvlManager.curLevel > 19)
+            else if (lvlManager.curLevel > 19)
             {
-                manager.gold += (lvlManager.curLevel+4);
+                manager.gold += (lvlManager.curLevel + 4);
             }
-            else if( lvlManager.curLevel > 14)
+            else if (lvlManager.curLevel > 14)
             {
-                manager.gold += (lvlManager.curLevel+2);
+                manager.gold += (lvlManager.curLevel + 2);
             }
             else if (lvlManager.curLevel == 10)
             {
@@ -111,20 +113,21 @@ public class Spawner : MonoBehaviour
             {
                 manager.gold++;
             }
-            
+
             slcd--;
             if (slcd == 0)
             {
                 spawnLimitPerLevel++;
-                slcd = addSpawnLimitEvery;
-                
+                slcd = addSpawnLimitEveryLevel;
             }
-
-            
-        }
-        if (allInvaders.Count >= (spawnLimitPerLevel - 1))
-        {
+            allInvaders.Clear();
+            spawnCount = 0;
+            lvlManager.curLevel++;
+            killCount = 0;
+            debugCount = 0;
+            print("Prepare Phase");
             lvlManager.curPhase = Phase.Prepare;
         }
+
     }
 }

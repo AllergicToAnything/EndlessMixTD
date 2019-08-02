@@ -50,11 +50,17 @@ MonoBehaviour:
   hp: 1
   damage: 1
   target: {fileID: 3372877012107432237, guid: 7bf3d2d68284c934b8525e460baa8e46, type: 3}
-  isStunned: 0
   lvlManager: {fileID: 3471242353134786497, guid: bd7f80cc7e7879242a678b4bae863edc,
     type: 3}
   velocity: 0
   rayLength: 0.3
+  spawner: {fileID: 0}
+  isStunned: 0
+  isSlowByIce: 0
+  isSlowByPoison: 0
+  curSpeed: 0
+  stunCD: 0
+  bullet: {fileID: 756992481739789305, guid: c279b08616969854ba9792a4ac01639c, type: 3}
 --- !u!195 &3527682950876418088
 NavMeshAgent:
   m_ObjectHideFlags: 0

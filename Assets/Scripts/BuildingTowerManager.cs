@@ -30,7 +30,7 @@ public class BuildingTowerManager : MonoBehaviour
     
     public void WhenClick()
     {
-        if (Input.GetMouseButtonDown(0) /*&& lvlManager.curPhase == Phase.Prepare*/)
+        if (Input.GetMouseButtonDown(0) && lvlManager.curPhase == Phase.Prepare)
         {
             GetWorldPoint(Input.mousePosition);
             UISwitchButton();

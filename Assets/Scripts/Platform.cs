@@ -52,24 +52,24 @@ public class Platform : MonoBehaviour
     {
         if(elements == Element.Fire)
         {
-            tower.attackCooldown *= .5f-.01f*tower.towerLevel;
-            detector.damage*=.5f*tower.towerLevel;
+            tower.attackCooldown *= .51f-.01f*tower.towerLevel;
+            detector.damage*=.8f*tower.towerLevel;
         }
         if (elements == Element.Electric)
         {
-            tower.attackCooldown *= .2f - .01f * tower.towerLevel;
-            detector.damage *= .2f * tower.towerLevel;
+            tower.attackCooldown *= .22f - .02f * tower.towerLevel;
+            detector.damage *= .4f * tower.towerLevel;
             
         }
         if (elements == Element.Ice)
         {
-            tower.attackCooldown *= 1.5f - .01f * tower.towerLevel;
-            detector.damage *= .5f * tower.towerLevel;
+            tower.attackCooldown *= 1.505f - .005f * tower.towerLevel;
+            detector.damage *= 1f * tower.towerLevel;
         }
         if (elements == Element.Poison)
         {
-            tower.attackCooldown *= .8f - .01f * tower.towerLevel;
-            detector.damage *= 2f * tower.towerLevel;
+            tower.attackCooldown *= .91f - .01f * tower.towerLevel;
+            detector.damage *= 1.6f * tower.towerLevel;
         }
     }
 
