@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Phase { Prepare,Prebattle,Battle }
 
@@ -11,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Spawner spawner;
     public float prebattleCD = 5f;
     public float PrepareCD = 30f;
+    public Text phaseLvl;
 
     [SerializeField]
     private float pbcd;
@@ -34,18 +36,18 @@ public class LevelManager : MonoBehaviour
     {
         if(curPhase == Phase.Prepare)
         {
-            
+            phaseLvl.text = "Preparing... " + pcd.ToString("n0");
             PreparationCountdown();
         }
         if(curPhase == Phase.Prebattle)
         {
-            
+            phaseLvl.text = "Going To Start in " + pbcd.ToString();
             ToBattlePhase();
         }
 
         if(curPhase == Phase.Battle)
         {
-            
+            phaseLvl.text = "Battling - Level " + curLevel.ToString();
             spawner.StartSpawning();
         }
 

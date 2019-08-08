@@ -52,8 +52,9 @@ public class Spawner : MonoBehaviour
             {
                 if (go!=null)
                 {
-                    
                     go.GetComponent<Enemy>().spawner = this;
+                    go.GetComponent<Enemy>().lvlManager = this.lvlManager;
+                    
                 }                
             }
         }
@@ -81,33 +82,21 @@ public class Spawner : MonoBehaviour
                 manager.gold++;
             }
 
-            if (lvlManager.curLevel > 34)
+            if (lvlManager.curLevel > 39)
             {
-                manager.gold += (lvlManager.curLevel + 24);
+                manager.gold += (lvlManager.curLevel + 1);
             }
             else if (lvlManager.curLevel > 29)
             {
-                manager.gold += (lvlManager.curLevel + 12);
-            }
-            else if (lvlManager.curLevel > 24)
-            {
-                manager.gold += (lvlManager.curLevel + 6);
+                manager.gold += 3;
             }
             else if (lvlManager.curLevel > 19)
             {
-                manager.gold += (lvlManager.curLevel + 4);
-            }
-            else if (lvlManager.curLevel > 14)
-            {
-                manager.gold += (lvlManager.curLevel + 2);
+                manager.gold += 2;
             }
             else if (lvlManager.curLevel == 10)
             {
-                manager.gold += 10;
-            }
-            else if (lvlManager.curLevel == 5)
-            {
-                manager.gold += 5;
+                manager.gold += 1;
             }
             else
             {
@@ -120,7 +109,7 @@ public class Spawner : MonoBehaviour
                 spawnLimitPerLevel++;
                 slcd = addSpawnLimitEveryLevel;
             }
-            allInvaders.Clear();
+            allInvaders = new List<GameObject>();
             spawnCount = 0;
             lvlManager.curLevel++;
             killCount = 0;

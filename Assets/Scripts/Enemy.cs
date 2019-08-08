@@ -27,7 +27,8 @@ public class Enemy : Unit
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
         curSpeed = GetComponent<NavMeshAgent>().speed;
-        hp += hp * lvlManager.curLevel;
+        Invoke("Hp",0.5f);
+      
     }
 
     public void Stunned(float stunDuration)
@@ -45,6 +46,12 @@ public class Enemy : Unit
             GetComponent<NavMeshAgent>().speed = curSpeed;
             
         }
+    }
+
+    public void Hp()
+    {
+        hp = 1+((lvlManager.curLevel * lvlManager.curLevel )/ 1.6f);
+        Debug.Log($"lvlManager : {lvlManager.curLevel}");
     }
 
     //public GameObject bullet;
