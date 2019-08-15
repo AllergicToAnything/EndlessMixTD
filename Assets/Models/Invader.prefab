@@ -60,6 +60,8 @@ MonoBehaviour:
   isSlowByPoison: 0
   curSpeed: 0
   stunCD: 0
+  iceStatusDur: 0
+  slowByIceCD: 1
   bullet: {fileID: 756992481739789305, guid: c279b08616969854ba9792a4ac01639c, type: 3}
 --- !u!195 &3527682950876418088
 NavMeshAgent:

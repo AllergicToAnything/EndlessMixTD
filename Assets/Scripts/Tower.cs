@@ -23,6 +23,8 @@ public class Tower : MonoBehaviour
     public int towerLevel = 1;
     public int cost = 1;
     public float miniStunDur = .05f;
+    public float icySlowDur = 1f;
+   
 
 
     private void OnEnable()
@@ -57,7 +59,7 @@ public class Tower : MonoBehaviour
         }       
             Attack();       
     }
-
+      
     // Attack within an area
     public void Attack()
     {
@@ -112,7 +114,7 @@ public class Tower : MonoBehaviour
    public void LevelUP()
     {
         towerLevel++;
-        cost= towerLevel*2;
+        cost= towerLevel*towerLevel;
     }
 
 

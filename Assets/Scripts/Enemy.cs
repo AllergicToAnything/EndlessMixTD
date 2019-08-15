@@ -18,6 +18,8 @@ public class Enemy : Unit
     public bool isSlowByPoison = false;
     public float curSpeed;
     public float stunCD;
+    public float slowByIceCD = 0f;
+    RaycastHit hit;
 
     public GameObject bullet;
 
@@ -37,15 +39,10 @@ public class Enemy : Unit
 
         if (isStunned == true)
         {
-            
             GetComponent<NavMeshAgent>().speed = 0f;            
             
         }
-        if (isStunned == false)
-        {
-            GetComponent<NavMeshAgent>().speed = curSpeed;
-            
-        }
+        
     }
 
     public void Hp()
@@ -56,10 +53,11 @@ public class Enemy : Unit
 
     //public GameObject bullet;
     
+    
   
     void Update()
     {
-        CheckStunned();        
+        CheckStatus();        
 
         Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
@@ -71,7 +69,7 @@ public class Enemy : Unit
 
     public void CheckObstacles()
     {
-        RaycastHit hit;
+        
 
         Ray ray = new Ray(transform.position, Vector3.forward);
         if (Physics.Raycast(ray, out hit, rayLength))
@@ -94,6 +92,8 @@ public class Enemy : Unit
         }
     }
 
+   
+
     IEnumerator CheckStun2()
     {
         yield return new WaitForSeconds(5f);
@@ -101,6 +101,7 @@ public class Enemy : Unit
         {
             print("Obsticle Detected");
             Instantiate(bullet, this.transform.position, this.transform.rotation);
+            hit.collider.gameObject.SetActive(false);
         }
     }
 
@@ -125,27 +126,46 @@ public class Enemy : Unit
             if (bullet.thisElement == Element.Electric)
             {
                 isStunned = true;
+                if (isStunned == true)
+                {
+                    GetComponent<NavMeshAgent>().speed = 0f;
+                }
                 Stunned(bullet.detector.GetComponent<Tower>().miniStunDur);
+                
             }
-            
+            if (bullet.thisElement == Element.Ice)
+            {
+                isSlowByIce = true;
+                if (isSlowByIce == true)
+                {
+                    GetComponent<NavMeshAgent>().speed = 1.4f;
+                }
+                slowByIceCD = bullet.detector.GetComponent<Tower>().icySlowDur;                
+            }
             other.gameObject.SetActive(false);   
         }
     }
 
-    public void CheckStunned()
+    public void CheckStatus()
     {
+        // Stun
         if (stunCD > 0) { stunCD -= Time.deltaTime; }
         if (stunCD <= 0) { stunCD = 0; }
         if (stunCD == 0)
         { isStunned = false; }
-        if (isStunned == true)
-        {
-           GetComponent<NavMeshAgent>().speed = 0f;
-        }
-        if (isStunned == false)
+        
+        if (isStunned == false && isSlowByIce == false && isSlowByPoison == false)
         {
             GetComponent<NavMeshAgent>().speed = curSpeed;
         }
+
+        // Slow by Ice
+        if (slowByIceCD > 0) { slowByIceCD -= Time.deltaTime; }
+        if (slowByIceCD <= 0) { slowByIceCD = 0; }
+        if (slowByIceCD == 0) { isSlowByIce = false; }
+
+        
+      
     }
 
     /*

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Shield : Unit
 {
     public Text HP;
+    public GameObject loseScreen;
 
     private void Update()
     {
@@ -18,11 +19,11 @@ public class Shield : Unit
 
         if(other.gameObject.CompareTag("Invader"))
         {
-
             spawner.debugCount++;
             hp -= 1;
             Destroy(other.gameObject);
-            if(this.hp <= 1) { Destroy(this.gameObject); }
+            if(this.hp <= -1) { loseScreen.SetActive(true); Destroy(this.gameObject); }
+            
             
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Detector : Unit
 {
+    public float initDamage;
     Tower tower;
     public List<GameObject> invader = new List<GameObject>();
     
@@ -18,6 +19,7 @@ public class Detector : Unit
     {
         tower = this.gameObject.GetComponent<Tower>();
         hp = 1;
+        initDamage = damage;
     }
 
     void OnTriggerEnter(Collider other)
@@ -51,7 +53,7 @@ public class Detector : Unit
     public new void TakeDamage(float damageAmount)
     {
         hp -= damageAmount;
-        if (hp <= 0) { tower.platform.towerStates = State.I; tower.platform.elements = Element.None; tower.thisElement = Element.None; this.gameObject.SetActive(false);  } // Die
+        if (hp <= 0) { tower.platform.towerStates = State.I; tower.platform.elements = Element.None; tower.thisElement = Element.None;damage = initDamage; this.gameObject.SetActive(false);  } // Die
     }
 
     }

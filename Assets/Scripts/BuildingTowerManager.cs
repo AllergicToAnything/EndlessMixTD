@@ -12,11 +12,13 @@ public class BuildingTowerManager : MonoBehaviour
     public int gold = 1;
     public GameObject _confirmUI;
     public GameObject _towerUpgradeMenu;
+    public GameObject _towerLevelUpgradeMenu;
     public GameObject _elementalSelection;
     public Text notEnoughGold;
     public Text goldTextOutput;
     public LevelManager lvlManager;
     public LayerMask mask = -1;
+    public bool ableToUpgrade = false;
 
     Vector3 targetPosition;
     public Camera cam;
@@ -140,7 +142,26 @@ public class BuildingTowerManager : MonoBehaviour
             gold -= 1;
         }
     }   
+    public void UpgradeConfirmButton()
+    {
+        if(platform.towerStates == State.B)
+        {
+            if(ableToUpgrade == true)
+            {
+                platform.tower.LevelUP();
+                platform.TowerElementAttribute();
+            }
+        }
+    }
+
+
+
     
+    IEnumerator NotEnoughGold()
+    {
+        yield return new WaitForSeconds(1.5f);
+        notEnoughGold.gameObject.SetActive(false);
+    }
 
     Vector3 GetWorldPoint(Vector3 screenSpace) // Collision for click
     {
@@ -159,18 +180,41 @@ public class BuildingTowerManager : MonoBehaviour
                         platform.towerStates = State.P;
                     }
                     
+                    
                 }
                 else if( gold <= 0)
                 {
                     notEnoughGold.gameObject.SetActive(true);
+                    StartCoroutine(NotEnoughGold());
+                }
+            } 
+            if(info.collider.gameObject.tag == "Tower" && _towerLevelUpgradeMenu.activeSelf == false)
+            {
+                Tower tower = info.collider.gameObject.GetComponent<Tower>();
+                Detector detector = info.collider.gameObject.GetComponent<Detector>();
+                if(tower.thisElement != Element.None)
+                {
+                    if(gold >= tower.cost)
+                    {
+                        ableToUpgrade = true;
+                    }
+                    else
+                    {
+                        ableToUpgrade = false;
+                    }
                 }
             }
-             return info.point;
-        }
+
+            return info.point;
+        }        
         else
         {
             return Vector3.zero;
         }
+
+        
+
+
     } 
 
 

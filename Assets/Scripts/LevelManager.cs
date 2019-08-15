@@ -41,13 +41,13 @@ public class LevelManager : MonoBehaviour
         }
         if(curPhase == Phase.Prebattle)
         {
-            phaseLvl.text = "Going To Start in " + pbcd.ToString("n0");
+            phaseLvl.text = "Going to Start in " + pbcd.ToString("n0");
             ToBattlePhase();
         }
 
         if(curPhase == Phase.Battle)
         {
-            phaseLvl.text = "Battling - Level " + curLevel.ToString();
+            phaseLvl.text = "Battling - Wave " + curLevel.ToString();
             spawner.StartSpawning();
         }
 

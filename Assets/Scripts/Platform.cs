@@ -33,6 +33,7 @@ public class Platform : MonoBehaviour
         {
             tower.gameObject.SetActive(false);
             isOccupied = false;
+            tower.towerLevel = 1;
         }
         if (towerStates == State.P) // What happen when State P
         {
@@ -52,24 +53,24 @@ public class Platform : MonoBehaviour
     {
         if(elements == Element.Fire)
         {
-            tower.attackCooldown *= .51f-.01f*tower.towerLevel;
-            detector.damage*=.8f*tower.towerLevel;
+            tower.attackCooldown *= .51f-.02f*tower.towerLevel;
+            detector.damage = detector.initDamage*=1.6f*tower.towerLevel;
         }
         if (elements == Element.Electric)
         {
-            tower.attackCooldown *= .22f - .02f * tower.towerLevel;
-            detector.damage *= .4f * tower.towerLevel;
+            tower.attackCooldown *= .32f - .02f * tower.towerLevel;
+            detector.damage = detector.initDamage *= .8f * tower.towerLevel;
             
         }
         if (elements == Element.Ice)
         {
-            tower.attackCooldown *= 1.505f - .005f * tower.towerLevel;
-            detector.damage *= 1f * tower.towerLevel;
+            tower.attackCooldown *= 1.505f - .075f * tower.towerLevel;
+            detector.damage = detector.initDamage *= 2f * tower.towerLevel;
         }
         if (elements == Element.Poison)
         {
-            tower.attackCooldown *= .91f - .01f * tower.towerLevel;
-            detector.damage *= 1.6f * tower.towerLevel;
+            tower.attackCooldown *= .91f - .05f * tower.towerLevel;
+            detector.damage = detector.initDamage *= 3.2f * tower.towerLevel;
         }
     }
 
