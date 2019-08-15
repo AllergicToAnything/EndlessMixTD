@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shield : Unit
 {
+    public Text HP;
+
+    private void Update()
+    {
+        HP.text = "Lives : " + hp.ToString();
+    }
+
     public Spawner spawner;
     private void OnTriggerEnter(Collider other)
     {
+
         if(other.gameObject.CompareTag("Invader"))
         {
 

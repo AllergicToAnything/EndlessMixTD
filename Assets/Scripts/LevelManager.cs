@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
         }
         if(curPhase == Phase.Prebattle)
         {
-            phaseLvl.text = "Going To Start in " + pbcd.ToString();
+            phaseLvl.text = "Going To Start in " + pbcd.ToString("n0");
             ToBattlePhase();
         }
 
