@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf9c737f4ce4b449a31fd721360bab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 2
   damage: 1
   target: {fileID: 3372877012107432237, guid: 7bf3d2d68284c934b8525e460baa8e46, type: 3}
   lvlManager: {fileID: 3471242353134786497, guid: bd7f80cc7e7879242a678b4bae863edc,
@@ -60,8 +60,8 @@ MonoBehaviour:
   isSlowByPoison: 0
   curSpeed: 0
   stunCD: 0
-  iceStatusDur: 0
   slowByIceCD: 1
+  slowByPoisonCD: 0
   bullet: {fileID: 756992481739789305, guid: c279b08616969854ba9792a4ac01639c, type: 3}
 --- !u!195 &3527682950876418088
 NavMeshAgent:

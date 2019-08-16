@@ -24,6 +24,7 @@ public class Tower : MonoBehaviour
     public int cost = 1;
     public float miniStunDur = .05f;
     public float icySlowDur = 1f;
+    public float poisonSlowDur = 1.5f;
    
 
 

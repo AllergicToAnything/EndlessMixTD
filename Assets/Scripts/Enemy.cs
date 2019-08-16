@@ -18,8 +18,12 @@ public class Enemy : Unit
     public bool isSlowByPoison = false;
     public float curSpeed;
     public float stunCD;
-    public float slowByIceCD = 0f;
+    public float slowByIceCD;
+    public float slowByPoisonCD;
     RaycastHit hit;
+    public float stunSpeed = 1;
+    public float icySlowSpeed = 1f;
+    public float poisonSlowSpeed = 1f;
 
     public GameObject bullet;
 
@@ -33,17 +37,12 @@ public class Enemy : Unit
       
     }
 
-    public void Stunned(float stunDuration)
+    void Move()
     {
-        stunCD = stunDuration;
-
-        if (isStunned == true)
-        {
-            GetComponent<NavMeshAgent>().speed = 0f;            
-            
-        }
-        
+        agent.speed = curSpeed * stunSpeed*icySlowSpeed*poisonSlowSpeed;
     }
+
+ 
 
     public void Hp()
     {
@@ -62,7 +61,7 @@ public class Enemy : Unit
         Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
         agent.SetDestination(target.position);
-
+        Move();
         Invoke("CheckObstacles",2f);
       
     }
@@ -128,19 +127,33 @@ public class Enemy : Unit
                 isStunned = true;
                 if (isStunned == true)
                 {
-                    GetComponent<NavMeshAgent>().speed = 0f;
+                    stunSpeed = 0f;
+                    stunCD = bullet.detector.GetComponent<Tower>().miniStunDur;
                 }
-                Stunned(bullet.detector.GetComponent<Tower>().miniStunDur);
-                
             }
             if (bullet.thisElement == Element.Ice)
             {
-                isSlowByIce = true;
+                isSlowByIce = true;                
                 if (isSlowByIce == true)
                 {
-                    GetComponent<NavMeshAgent>().speed = 1.4f;
+                    slowByIceCD = bullet.detector.GetComponent<Tower>().icySlowDur;
+                    icySlowSpeed = .5f;
+                    agent.speed *= icySlowSpeed;
+                    print("Invader speed : " + agent.speed.ToString());
                 }
-                slowByIceCD = bullet.detector.GetComponent<Tower>().icySlowDur;                
+                                
+            }
+            if (bullet.thisElement == Element.Poison)
+            {
+                isSlowByPoison = true;                
+                if (isSlowByPoison == true)
+                {
+                    slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
+                    poisonSlowSpeed = .7f;
+                    agent.speed *= poisonSlowSpeed;
+                    print("Invader speed : " + agent.speed.ToString());
+                }
+                
             }
             other.gameObject.SetActive(false);   
         }
@@ -154,9 +167,17 @@ public class Enemy : Unit
         if (stunCD == 0)
         { isStunned = false; }
         
-        if (isStunned == false && isSlowByIce == false && isSlowByPoison == false)
+        if (isStunned == false)
         {
-            GetComponent<NavMeshAgent>().speed = curSpeed;
+            stunSpeed = 1f;
+        }
+        if (isSlowByPoison == false)
+        {
+            poisonSlowSpeed = 1f;
+        }
+        if (isSlowByIce == false)
+        {
+            icySlowSpeed = 1f;
         }
 
         // Slow by Ice

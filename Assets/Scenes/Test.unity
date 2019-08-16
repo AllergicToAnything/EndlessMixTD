@@ -4754,7 +4754,7 @@ PrefabInstance:
     - target: {fileID: 3361856444658125586, guid: 76c8c7b8b9582204389d19ae578da577,
         type: 3}
       propertyPath: gold
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3361856444658125586, guid: 76c8c7b8b9582204389d19ae578da577,
         type: 3}
@@ -5426,6 +5426,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7760943553934860042, guid: 7bf3d2d68284c934b8525e460baa8e46,
+        type: 3}
+      propertyPath: m_Name
+      value: CoreTower
+      objectReference: {fileID: 0}
     - target: {fileID: 3372877012107432237, guid: 7bf3d2d68284c934b8525e460baa8e46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5480,11 +5485,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7760943553934860042, guid: 7bf3d2d68284c934b8525e460baa8e46,
-        type: 3}
-      propertyPath: m_Name
-      value: CoreTower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf3d2d68284c934b8525e460baa8e46, type: 3}
@@ -10749,6 +10749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776402884642782425, guid: d410f04bf627f744fb644b1904743154,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4776402884488754717, guid: d410f04bf627f744fb644b1904743154,
         type: 3}
