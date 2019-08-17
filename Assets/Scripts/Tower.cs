@@ -25,6 +25,9 @@ public class Tower : MonoBehaviour
     public float miniStunDur = .05f;
     public float icySlowDur = 1f;
     public float poisonSlowDur = 1.5f;
+    public float fireDPS = .5f;
+    public int fireDPSLimitCount;
+    public float fireDPSInterval;
    
 
 

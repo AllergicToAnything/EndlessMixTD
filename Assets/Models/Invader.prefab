@@ -58,10 +58,21 @@ MonoBehaviour:
   isStunned: 0
   isSlowByIce: 0
   isSlowByPoison: 0
+  isBurned: 0
+  isBurning: 0
+  isPoisoned: 0
   curSpeed: 0
   stunCD: 0
   slowByIceCD: 1
   slowByPoisonCD: 0
+  stunSpeed: 1
+  icySlowSpeed: 1
+  poisonSlowSpeed: 1
+  fireDPS: 0
+  fireDPSCD: 1e+17
+  fireDPSCount: 0
+  fireDPSLimitCount: 0
+  poisonDPS: 0
   bullet: {fileID: 756992481739789305, guid: c279b08616969854ba9792a4ac01639c, type: 3}
 --- !u!195 &3527682950876418088
 NavMeshAgent:

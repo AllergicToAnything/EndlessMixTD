@@ -16,6 +16,9 @@ public class Enemy : Unit
     public bool isStunned = false;
     public bool isSlowByIce = false;
     public bool isSlowByPoison = false;
+    public bool isBurned = false;
+    public bool isBurning = false;
+    public bool isPoisoned = false;
     public float curSpeed;
     public float stunCD;
     public float slowByIceCD;
@@ -24,6 +27,11 @@ public class Enemy : Unit
     public float stunSpeed = 1;
     public float icySlowSpeed = 1f;
     public float poisonSlowSpeed = 1f;
+    public float fireDPS;
+    public float fireDPSCD = 999999999f;
+    public int fireDPSCount;
+    public int fireDPSLimitCount;
+    public float poisonDPS;
 
     public GameObject bullet;
 
@@ -32,6 +40,7 @@ public class Enemy : Unit
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
+        agent.speed = lvlManager.enemySpeed;
         curSpeed = GetComponent<NavMeshAgent>().speed;
         Invoke("Hp",0.5f);
       
@@ -56,11 +65,10 @@ public class Enemy : Unit
   
     void Update()
     {
-        CheckStatus();        
-
+        agent.SetDestination(target.position);
+        CheckStatus();    
         Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
-        agent.SetDestination(target.position);
         Move();
         Invoke("CheckObstacles",2f);
       
@@ -119,9 +127,20 @@ public class Enemy : Unit
         if (other.gameObject.CompareTag("Bullet"))
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            if (bullet != null) { print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  "); print(name + "\n HP: " + hp.ToString());  }
+            if (bullet != null) { print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  "); print(name + "\n HP: " + hp.ToString());
+                
+            }
             
             TakeDamage(bullet.bulletDamage);
+            if (bullet.thisElement == Element.Fire)
+            {
+                isBurned = true;
+                fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
+                fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
+                fireDPSCD = bullet.detector.GetComponent<Tower>().fireDPSInterval;
+                fireDPSCount = 1;
+
+            }
             if (bullet.thisElement == Element.Electric)
             {
                 isStunned = true;
@@ -139,7 +158,6 @@ public class Enemy : Unit
                     slowByIceCD = bullet.detector.GetComponent<Tower>().icySlowDur;
                     icySlowSpeed = .5f;
                     agent.speed *= icySlowSpeed;
-                    print("Invader speed : " + agent.speed.ToString());
                 }
                                 
             }
@@ -151,7 +169,6 @@ public class Enemy : Unit
                     slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
                     poisonSlowSpeed = .7f;
                     agent.speed *= poisonSlowSpeed;
-                    print("Invader speed : " + agent.speed.ToString());
                 }
                 
             }
@@ -185,8 +202,32 @@ public class Enemy : Unit
         if (slowByIceCD <= 0) { slowByIceCD = 0; }
         if (slowByIceCD == 0) { isSlowByIce = false; }
 
+        if (fireDPSCD > 0) { fireDPSCD -= Time.deltaTime; }
+        if (fireDPSCD <= 0) { fireDPSCD = 0; }
+        if (fireDPSCD == 0) { FireDPSCounter(); }
+
+
+    }
+
+
+    void FireDPSCounter()
+    {
         
-      
+        isBurning = true;
+        if (isBurning == true)
+        {
+            fireDPSCount++;
+            TakeDamage(fireDPS);
+           // print(name + "\n" + " has received " + fireDPS + " damage.  "); print(name + "\n HP: " + hp.ToString());
+           // Debug.Log("Fire DPS Count : " + fireDPSCount.ToString() + " / " + fireDPSLimitCount.ToString());
+            isBurning = false;
+            // every 1 s will take damage until a certain count
+        }        
+        if (fireDPSLimitCount == fireDPSCount) { isBurned = false; isBurning = false;  }
+        if(isBurned == false)
+        {
+            fireDPSCount = 0;
+        }
     }
 
     /*

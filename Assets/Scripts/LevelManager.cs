@@ -7,8 +7,13 @@ public enum Phase { Prepare,Prebattle,Battle }
 
 public class LevelManager : MonoBehaviour
 {
-    public Phase curPhase;
+
     public int curLevel = 0;
+    public float gameSpeed = 1;
+    public float enemySpeed = 2f;
+
+    public Phase curPhase;
+    
     public Spawner spawner;
     public float prebattleCD = 5f;
     public float PrepareCD = 30f;
@@ -19,13 +24,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float pcd;
 
-    public float gameSpeed = 1;
-
     void OnEnable()
     {
         curLevel = 1;
         if(curLevel==1){curPhase = Phase.Prepare;}
-        Time.timeScale = gameSpeed;
         pbcd = prebattleCD;
         pcd = PrepareCD;
         print("Prepare Phase");
@@ -34,7 +36,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(curPhase == Phase.Prepare)
+        Time.timeScale = gameSpeed;
+        if (curPhase == Phase.Prepare)
         {
             phaseLvl.text = "Preparing... " + pcd.ToString("n0");
             PreparationCountdown();
