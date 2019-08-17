@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
     public int slcd;
     GameObject go;
     public int killCount = 0;
+    public GameObject allClear;
 
     public int debugCount = 0;
     public bool countLock = false;
@@ -74,7 +75,9 @@ public class Spawner : MonoBehaviour
 
     IEnumerator LevelClear()
     {
-        yield return new WaitForSeconds(5);
+        allClear.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        allClear.gameObject.SetActive(false);
         if (lvlManager.curPhase == Phase.Battle)
         {
             if (killCount >= spawnLimitPerLevel)
