@@ -27,7 +27,6 @@ public class Tower : MonoBehaviour
     public float poisonSlowDur = 1.5f;
     public float fireDPS = .5f;
     public int fireDPSLimitCount;
-    public float fireDPSInterval;
    
 
 

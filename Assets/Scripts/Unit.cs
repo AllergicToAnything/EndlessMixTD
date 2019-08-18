@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     public float damage = 1;
    
 
-    public void TakeDamage(float damageAmount) // Player and Asteroid take damage and destroy when hp = 0
+    public virtual void TakeDamage(float damageAmount) // Player and Asteroid take damage and destroy when hp = 0
     {
         hp -= damageAmount; 
         if (hp <= 0) { Destroy(this.gameObject); } // Die

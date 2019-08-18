@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
         if(curLevel==1){curPhase = Phase.Prepare;}
         pbcd = prebattleCD;
         pcd = PrepareCD;
-        print("Prepare Phase");
     }
 
     // Update is called once per frame
@@ -39,18 +38,18 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = gameSpeed;
         if (curPhase == Phase.Prepare)
         {
-            phaseLvl.text = "Preparing... " + pcd.ToString("n0");
+            phaseLvl.text = "Preparing . . . " + pcd.ToString("n0");
             PreparationCountdown();
         }
         if(curPhase == Phase.Prebattle)
         {
-            phaseLvl.text = "Going to Start in " + pbcd.ToString("n0");
+            phaseLvl.text = "Next Wave in . . . " + pbcd.ToString("n0");
             ToBattlePhase();
         }
 
         if(curPhase == Phase.Battle)
         {
-            phaseLvl.text = "Battling - Wave " + curLevel.ToString();
+            phaseLvl.text = "Wave " + curLevel.ToString();
             spawner.StartSpawning();
         }
 
@@ -63,8 +62,7 @@ public class LevelManager : MonoBehaviour
         if(pcd == 0)
         {
             pcd = PrepareCD;
-            print("Prebattle Phase");
-            print("Current Level: " + curLevel.ToString());
+           
             curPhase = Phase.Prebattle;
             
         }
@@ -77,7 +75,6 @@ public class LevelManager : MonoBehaviour
         if (pbcd == 0)
         {
             pbcd = prebattleCD;
-            print("Battle Phase");
             curPhase = Phase.Battle;
             
         }

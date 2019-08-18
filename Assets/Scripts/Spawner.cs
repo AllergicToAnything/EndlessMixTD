@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -75,7 +76,17 @@ public class Spawner : MonoBehaviour
 
     IEnumerator LevelClear()
     {
+        
+        
+        if (killCount != spawnLimitPerLevel)
+        {
+            allClear.GetComponentInChildren<Text>().text = "Wave Done!";
+        }
+
         allClear.gameObject.SetActive(true);
+
+        
+
         yield return new WaitForSeconds(5f);
         allClear.gameObject.SetActive(false);
         if (lvlManager.curPhase == Phase.Battle)
@@ -84,7 +95,6 @@ public class Spawner : MonoBehaviour
             {
                 manager.gold++;
             }
-
             if (lvlManager.curLevel > 39)
             {
                 manager.gold += (lvlManager.curLevel + 1);

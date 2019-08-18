@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : Unit
 {
     NavMeshAgent agent;
     public Transform target;
     LineRenderer lineRenderer;
-
+    public GameObject hitted;
     public LevelManager lvlManager;
     public float velocity;
     public float rayLength = .5f;
@@ -28,10 +29,15 @@ public class Enemy : Unit
     public float icySlowSpeed = 1f;
     public float poisonSlowSpeed = 1f;
     public float fireDPS;
-    public float fireDPSCD = 999999999f;
+    float fireDPSCD = 999999999f;
+    public float fireDPSInterval = .5f;
     public int fireDPSCount;
     public int fireDPSLimitCount;
     public float poisonDPS;
+    public int poisonDPSCount;
+    public int poisonDPSLimitCount;
+    float poisonDPSCD = 999999999f;
+    public float poisonDPSInterval = .8f;
 
     public GameObject bullet;
 
@@ -43,6 +49,7 @@ public class Enemy : Unit
         agent.speed = lvlManager.enemySpeed;
         curSpeed = GetComponent<NavMeshAgent>().speed;
         Invoke("Hp",0.5f);
+        
       
     }
 
@@ -55,8 +62,8 @@ public class Enemy : Unit
 
     public void Hp()
     {
-        hp = 1+((lvlManager.curLevel * lvlManager.curLevel )/ 1.6f);
-        Debug.Log($"lvlManager : {lvlManager.curLevel}");
+        hp = hp+1+((lvlManager.curLevel * lvlManager.curLevel )/ 1.6f);
+        
     }
 
     //public GameObject bullet;
@@ -71,7 +78,9 @@ public class Enemy : Unit
         velocity = agent.velocity.magnitude / agent.speed;
         Move();
         Invoke("CheckObstacles",2f);
-      
+        
+
+
     }
 
     public void CheckObstacles()
@@ -83,7 +92,7 @@ public class Enemy : Unit
         {
             if (this.velocity == 0)
             {
-                if (this.isStunned == false)
+                if (!isStunned)
                 {
                     Invoke("CheckStun", 2f);
                 }
@@ -95,20 +104,41 @@ public class Enemy : Unit
     {
         if(this.velocity == 0)
         {
-            StartCoroutine(CheckStun2());
+            if (!isStunned)
+            {
+                StartCoroutine(CheckStun2());
+            }
         }
     }
 
-   
+    IEnumerator Hitted()
+    {
+        
+        yield return new WaitForSeconds(.03f);
+        hitted.gameObject.SetActive(false);
+    }
+
+ 
+
+
 
     IEnumerator CheckStun2()
     {
-        yield return new WaitForSeconds(5f);
-        if (this.velocity == 0&& this.isStunned == false)
+        yield return new WaitForSeconds(3f);
+        if (this.velocity == 0)
         {
             print("Obsticle Detected");
             Instantiate(bullet, this.transform.position, this.transform.rotation);
-            hit.collider.gameObject.SetActive(false);
+           /* if (hit.collider.gameObject.tag == "Tower")
+            {
+                Platform curPlatform = hit.collider.GetComponent<Tower>().platform;
+                curPlatform.towerStates = State.I;
+                curPlatform.elements = Element.None;
+                curPlatform.tower.thisElement = Element.None;
+
+                hit.collider.gameObject.SetActive(false);
+            }*/
+
         }
     }
 
@@ -117,6 +147,8 @@ public class Enemy : Unit
     public new void TakeDamage(float damageAmount)
     {
         hp -= damageAmount;
+        hitted.gameObject.SetActive(true);
+        StartCoroutine(Hitted());
         if (hp <= 0) { spawner.killCount++;  spawner.debugCount++; Destroy(this.gameObject); } // Die
     }
 
@@ -127,18 +159,21 @@ public class Enemy : Unit
         if (other.gameObject.CompareTag("Bullet"))
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            if (bullet != null) { print(name + "\n" + " has received " + bullet.bulletDamage.ToString() + " damage.  "); print(name + "\n HP: " + hp.ToString());
-                
-            }
+            
             
             TakeDamage(bullet.bulletDamage);
             if (bullet.thisElement == Element.Fire)
             {
                 isBurned = true;
-                fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
-                fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
-                fireDPSCD = bullet.detector.GetComponent<Tower>().fireDPSInterval;
-                fireDPSCount = 1;
+                if (isBurned == true)
+                {
+                    fireDPSCount = 1;
+                    fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
+                    fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
+                    fireDPSCD = fireDPSInterval;
+                }
+                //poisonDPSCD = poisonDPSInterval;
+
 
             }
             if (bullet.thisElement == Element.Electric)
@@ -163,12 +198,17 @@ public class Enemy : Unit
             }
             if (bullet.thisElement == Element.Poison)
             {
-                isSlowByPoison = true;                
+                isSlowByPoison = true;
+                //isPoisoned = true;
+                //poisonDPSCount = 1;
+                //poisonDPSLimitCount = bullet.detector.GetComponent<Tower>().posionDPSLimitCount;
+                //poisonDPS = bullet.detector.GetComponent<Tower>().poisonDPS;
                 if (isSlowByPoison == true)
                 {
                     slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
                     poisonSlowSpeed = .7f;
                     agent.speed *= poisonSlowSpeed;
+                    
                 }
                 
             }
@@ -202,9 +242,14 @@ public class Enemy : Unit
         if (slowByIceCD <= 0) { slowByIceCD = 0; }
         if (slowByIceCD == 0) { isSlowByIce = false; }
 
-        if (fireDPSCD > 0) { fireDPSCD -= Time.deltaTime; }
+        if (fireDPSCount < fireDPSLimitCount && fireDPSCD > 0) { fireDPSCD -= Time.deltaTime; }
         if (fireDPSCD <= 0) { fireDPSCD = 0; }
-        if (fireDPSCD == 0) { FireDPSCounter(); }
+        if (fireDPSCD == 0)
+        {
+            fireDPSCount++;
+            FireDPSCounter();
+            fireDPSCD = fireDPSInterval;
+        }
 
 
     }
@@ -212,22 +257,19 @@ public class Enemy : Unit
 
     void FireDPSCounter()
     {
-        
         isBurning = true;
         if (isBurning == true)
         {
-            fireDPSCount++;
             TakeDamage(fireDPS);
-           // print(name + "\n" + " has received " + fireDPS + " damage.  "); print(name + "\n HP: " + hp.ToString());
-           // Debug.Log("Fire DPS Count : " + fireDPSCount.ToString() + " / " + fireDPSLimitCount.ToString());
+            print("Burned " + fireDPSCount.ToString());
+            hitted.gameObject.SetActive(true);
+            StartCoroutine(Hitted());
             isBurning = false;
+            if (fireDPSCount >= fireDPSLimitCount) { isBurned = false; isBurning = false;}
             // every 1 s will take damage until a certain count
         }        
-        if (fireDPSLimitCount == fireDPSCount) { isBurned = false; isBurning = false;  }
-        if(isBurned == false)
-        {
-            fireDPSCount = 0;
-        }
+        
+        
     }
 
     /*
@@ -259,7 +301,7 @@ public class Enemy : Unit
 
     // Raycast a ray to detect the tower, when the velocity = 0 it will attack an obsticle to pass through the tower if it's not stunned
 
-
+   
 
 
 }
