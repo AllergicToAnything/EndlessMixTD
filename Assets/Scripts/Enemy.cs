@@ -14,33 +14,43 @@ public class Enemy : Unit
     public float velocity;
     public float rayLength = .5f;
     public Spawner spawner;
+    RaycastHit hit;
+
     public bool isStunned = false;
     public bool isSlowByIce = false;
     public bool isSlowByPoison = false;
     public bool isBurned = false;
     public bool isBurning = false;
     public bool isPoisoned = false;
+    public bool isPoisoning = false;
+
     public float curSpeed;
-    public float stunCD;
-    public float slowByIceCD;
-    public float slowByPoisonCD;
-    RaycastHit hit;
-    public float stunSpeed = 1;
-    public float icySlowSpeed = 1f;
-    public float poisonSlowSpeed = 1f;
-    public float fireDPS;
+
+    float stunCD;
+    float stunSpeed = 1;
+
+    float slowByIceCD;
+    float icySlowSpeed = 1f;    
+
+    float fireDPS;
     float fireDPSCD = 999999999f;
-    public float fireDPSInterval = .5f;
-    public int fireDPSCount;
-    public int fireDPSLimitCount;
-    public float poisonDPS;
-    public int poisonDPSCount;
-    public int poisonDPSLimitCount;
+    float fireDPSInterval = .5f;
+    int fireDPSCount;
+    int fireDPSLimitCount;
+
+    float poisonSlowSpeed = 1f;
+    float poisonDPS;
+    int poisonDPSCount;
+    int poisonDPSLimitCount;
     float poisonDPSCD = 999999999f;
-    public float poisonDPSInterval = .8f;
+    float poisonDPSInterval = .8f;
+    float slowByPoisonCD;
 
     public GameObject bullet;
 
+    public float atkCD;
+    float atkSpd = 3f;
+    
     void Start()
     {
         isStunned = false;
@@ -49,6 +59,7 @@ public class Enemy : Unit
         agent.speed = lvlManager.enemySpeed;
         curSpeed = GetComponent<NavMeshAgent>().speed;
         Invoke("Hp",0.5f);
+        atkCD = atkSpd;
         
       
     }
@@ -78,9 +89,9 @@ public class Enemy : Unit
         velocity = agent.velocity.magnitude / agent.speed;
         Move();
         Invoke("CheckObstacles",2f);
-        
 
-
+        if (atkCD > 0) { atkCD -= Time.deltaTime; }
+        if (atkCD < 0) { atkCD = 0; }
     }
 
     public void CheckObstacles()
@@ -94,7 +105,10 @@ public class Enemy : Unit
             {
                 if (!isStunned)
                 {
-                    Invoke("CheckStun", 2f);
+                    if (atkCD == 0)
+                    {
+                        Invoke("CheckStun", 2f);
+                    }
                 }
             }
         }
@@ -128,7 +142,9 @@ public class Enemy : Unit
         if (this.velocity == 0)
         {
             print("Obsticle Detected");
-            Instantiate(bullet, this.transform.position, this.transform.rotation);
+            Instantiate(bullet, this.transform.position, this.transform.rotation); 
+            atkCD = atkSpd; 
+            
            /* if (hit.collider.gameObject.tag == "Tower")
             {
                 Platform curPlatform = hit.collider.GetComponent<Tower>().platform;
@@ -172,7 +188,6 @@ public class Enemy : Unit
                     fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
                     fireDPSCD = fireDPSInterval;
                 }
-                //poisonDPSCD = poisonDPSInterval;
 
 
             }
@@ -199,10 +214,15 @@ public class Enemy : Unit
             if (bullet.thisElement == Element.Poison)
             {
                 isSlowByPoison = true;
-                //isPoisoned = true;
-                //poisonDPSCount = 1;
-                //poisonDPSLimitCount = bullet.detector.GetComponent<Tower>().posionDPSLimitCount;
-                //poisonDPS = bullet.detector.GetComponent<Tower>().poisonDPS;
+                isPoisoned = true;
+                if (isBurned == true)
+                {
+                    fireDPSCount = 1;
+                    fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
+                    fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
+                    fireDPSCD = fireDPSInterval;
+                }
+
                 if (isSlowByPoison == true)
                 {
                     slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
@@ -249,6 +269,32 @@ public class Enemy : Unit
             fireDPSCount++;
             FireDPSCounter();
             fireDPSCD = fireDPSInterval;
+        }
+
+        if (poisonDPSCount < poisonDPSLimitCount && poisonDPSCD > 0) { poisonDPSCD -= Time.deltaTime; }
+        if (poisonDPSCD <= 0) { poisonDPSCD = 0; }
+        if (poisonDPSCD == 0)
+        {
+            poisonDPSCount++;
+            PoisonDPSCounter();
+            poisonDPSCD = poisonDPSInterval;
+        }
+
+
+    }
+
+    void PoisonDPSCounter()
+    {
+        isPoisoning = true;
+        if (isBurning == true)
+        {
+            TakeDamage(fireDPS);
+            print("Burned " + fireDPSCount.ToString());
+            hitted.gameObject.SetActive(true);
+            StartCoroutine(Hitted());
+            isBurning = false;
+            if (fireDPSCount >= fireDPSLimitCount) { isBurned = false; isBurning = false; }
+            // every 1 s will take damage until a certain count
         }
 
 

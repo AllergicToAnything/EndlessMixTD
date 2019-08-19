@@ -7,13 +7,7 @@ public class Detector : Unit
     public float initDamage;
     Tower tower;
     public List<GameObject> invader = new List<GameObject>();
-    
-
-    private void Update()
-    {
-       
-        
-    }
+   
 
     private void OnEnable()
     {
@@ -28,6 +22,10 @@ public class Detector : Unit
         if (other.gameObject.tag == "Invader")
         {
            invader.Add(other.gameObject);
+        }
+        if(other.gameObject.tag == "EnemyBullet")
+        {
+            TakeDamage(1);
         }
         
     }
@@ -50,10 +48,6 @@ public class Detector : Unit
         }
     }
 
-    public new void TakeDamage(float damageAmount)
-    {
-        hp -= damageAmount;
-        if (hp <= 0) { tower.platform.towerStates = State.I; tower.platform.elements = Element.None; tower.thisElement = Element.None;damage = initDamage; this.gameObject.SetActive(false);  } // Die
-    }
+   
 
     }

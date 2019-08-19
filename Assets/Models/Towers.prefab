@@ -11,7 +11,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &157860659
 MonoBehaviour:
@@ -27,9 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &425655763
 SphereCollider:
@@ -42,7 +40,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &425655764
 MonoBehaviour:
@@ -58,9 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &568633060
 SphereCollider:
@@ -73,7 +69,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &568633061
 MonoBehaviour:
@@ -89,9 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1515880623
 SphereCollider:
@@ -104,7 +98,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1515880624
 MonoBehaviour:
@@ -120,9 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &971934086
 SphereCollider:
@@ -135,7 +127,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &971934087
 MonoBehaviour:
@@ -151,9 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &2056805066
 SphereCollider:
@@ -166,7 +156,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2056805067
 MonoBehaviour:
@@ -182,9 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &2027523286
 SphereCollider:
@@ -197,7 +185,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2027523287
 MonoBehaviour:
@@ -213,9 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &238139885
 SphereCollider:
@@ -228,7 +214,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &238139886
 MonoBehaviour:
@@ -244,9 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &268823454
 SphereCollider:
@@ -259,7 +243,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &268823455
 MonoBehaviour:
@@ -275,9 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &666897655
 SphereCollider:
@@ -290,7 +272,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &666897656
 MonoBehaviour:
@@ -306,9 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &795758560
 SphereCollider:
@@ -321,7 +301,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &795758561
 MonoBehaviour:
@@ -337,9 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1610816876
 SphereCollider:
@@ -352,7 +330,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1610816877
 MonoBehaviour:
@@ -368,9 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1889050267
 SphereCollider:
@@ -383,7 +359,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1889050268
 MonoBehaviour:
@@ -399,9 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1676419988
 SphereCollider:
@@ -414,7 +388,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1676419989
 MonoBehaviour:
@@ -430,9 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &196092373
 SphereCollider:
@@ -445,7 +417,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &196092374
 MonoBehaviour:
@@ -461,9 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &946937863
 SphereCollider:
@@ -476,7 +446,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &946937864
 MonoBehaviour:
@@ -492,9 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1694598027
 SphereCollider:
@@ -507,7 +475,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1694598028
 MonoBehaviour:
@@ -523,9 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &884016670
 SphereCollider:
@@ -538,7 +504,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &884016671
 MonoBehaviour:
@@ -554,9 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &472878426
 SphereCollider:
@@ -569,7 +533,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &472878427
 MonoBehaviour:
@@ -585,9 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1944584697
 SphereCollider:
@@ -600,7 +562,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1944584698
 MonoBehaviour:
@@ -616,9 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &322635086
 SphereCollider:
@@ -631,7 +591,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &322635087
 MonoBehaviour:
@@ -647,9 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1809710994
 SphereCollider:
@@ -662,7 +620,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1809710995
 MonoBehaviour:
@@ -678,9 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1788923084
 SphereCollider:
@@ -693,7 +649,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1788923085
 MonoBehaviour:
@@ -709,9 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1656298348
 SphereCollider:
@@ -724,7 +678,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1656298349
 MonoBehaviour:
@@ -740,9 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1247889284
 SphereCollider:
@@ -755,7 +707,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1247889285
 MonoBehaviour:
@@ -771,9 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1701139459
 SphereCollider:
@@ -786,7 +736,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1701139460
 MonoBehaviour:
@@ -802,9 +752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &1550893164
 SphereCollider:
@@ -817,7 +765,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1550893165
 MonoBehaviour:
@@ -833,9 +781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &94967175
 SphereCollider:
@@ -848,7 +794,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &94967176
 MonoBehaviour:
@@ -864,9 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &894584448
 SphereCollider:
@@ -879,7 +823,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &894584449
 MonoBehaviour:
@@ -895,9 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!135 &15083411
 SphereCollider:
@@ -910,7 +852,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.035
+  m_Radius: 0.04
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &15083412
 MonoBehaviour:
@@ -926,9 +868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   damage: 1
-  isStunned: 0
-  isSlowByIce: 0
-  isSlowByPoison: 0
+  initDamage: 0
   invader: []
 --- !u!1 &8150944244000043621
 GameObject:
@@ -941,7 +881,7 @@ GameObject:
   - component: {fileID: 8150944244000043622}
   m_Layer: 0
   m_Name: Towers
-  m_TagString: Tower
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1098,8 +1038,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -1343,8 +1288,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -1588,8 +1538,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -1833,8 +1788,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -2078,8 +2038,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -2323,8 +2288,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -2568,8 +2538,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -2813,8 +2788,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -3058,8 +3038,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -3303,8 +3288,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -3548,14 +3538,19 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 795758561}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPS
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: detector
-      value: 
-      objectReference: {fileID: 795758561}
+      propertyPath: fireDPSLimitCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3798,8 +3793,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -4043,8 +4043,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -4288,8 +4293,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -4533,8 +4543,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -4778,8 +4793,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -5023,8 +5043,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -5268,8 +5293,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -5513,8 +5543,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -5758,8 +5793,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -6003,8 +6043,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -6248,8 +6293,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -6493,8 +6543,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -6738,8 +6793,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -6983,8 +7043,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -7228,8 +7293,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -7473,8 +7543,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -7718,8 +7793,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -7963,8 +8043,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
@@ -8208,8 +8293,13 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}
-      propertyPath: attackCooldown
+      propertyPath: fireDPS
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630675331715127977, guid: a1123d6c075cf8b49bd3642ae0637e9c,
+        type: 3}
+      propertyPath: fireDPSLimitCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8651935534170396790, guid: a1123d6c075cf8b49bd3642ae0637e9c,
         type: 3}

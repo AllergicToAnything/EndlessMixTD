@@ -43,10 +43,9 @@ public class Platform : MonoBehaviour
         }
         if (towerStates == State.B)// What happen when State B
         {
-            tower.gameObject.SetActive(true);
             isOccupied = true;
         }
-
+        
     }
 
     public void TowerElementAttribute()

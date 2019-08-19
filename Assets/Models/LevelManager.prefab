@@ -43,5 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e0597f9e31e744fac514963ad8d0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curPhase: 0
   curLevel: 0
+  gameSpeed: 0
+  enemySpeed: 2
+  curPhase: 0
+  spawner: {fileID: 0}
+  prebattleCD: 5
+  PrepareCD: 30
+  phaseLvl: {fileID: 0}
+  pbcd: 0
+  pcd: 0

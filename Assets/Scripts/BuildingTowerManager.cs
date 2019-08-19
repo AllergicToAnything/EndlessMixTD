@@ -28,6 +28,8 @@ public class BuildingTowerManager : MonoBehaviour
     {
         WhenClick();
         goldTextOutput.text = "Gold : "+gold.ToString();
+        
+        
     }
     
     public void WhenClick()
@@ -178,9 +180,9 @@ public class BuildingTowerManager : MonoBehaviour
                     if(platform.isOccupied == false)
                     {
                         platform.towerStates = State.P;
-                    }
-                    
-                    
+                        
+                    }                    
+
                 }
                 else if( gold <= 0)
                 {

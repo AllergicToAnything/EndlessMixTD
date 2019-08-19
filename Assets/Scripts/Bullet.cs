@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
     {
         Invoke("Delay", 0.005f);
         Invoke("Decay", decayTime );
-        
     }
 
     void Delay()

@@ -42,7 +42,7 @@ public class MaterialChanger : MonoBehaviour
     public void ChangeButton()
     {
         
-        if (platform.towerStates == State.P)
+        if (platform.towerStates == State.P|| platform.towerStates == State.I)
         {
             if (this.gameObject.tag == "Rim")
             {

@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     GameObject go;
     public int killCount = 0;
     public GameObject allClear;
+    
 
     public int debugCount = 0;
     public bool countLock = false;
@@ -33,12 +34,18 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (lvlManager.curPhase == Phase.Prepare)
+        {
+            spawnCount = 0;
+            killCount = 0;
+            debugCount = 0;
+        }
     }
 
     // Start Spawning
     public void StartSpawning()
     {
+        
         if (cd > 0)
         {
            cd -= Time.deltaTime;
@@ -60,18 +67,20 @@ public class Spawner : MonoBehaviour
                 }                
             }
         }
-        if (spawnCount == spawnLimitPerLevel && lvlManager.curPhase == Phase.Battle)
+        if (spawnCount >= spawnLimitPerLevel && lvlManager.curPhase == Phase.Battle)
         {
             foreach (GameObject go in allInvaders)
             {
                 
-                if (debugCount==spawnLimitPerLevel)
+                if (debugCount>=spawnLimitPerLevel)
                 {
                     StartCoroutine(LevelClear());
                 }
                 
             }
         } 
+
+    
     }
 
     IEnumerator LevelClear()
@@ -123,11 +132,7 @@ public class Spawner : MonoBehaviour
                 slcd = addSpawnLimitEveryLevel;
             }
             allInvaders = new List<GameObject>();
-            spawnCount = 0;
             lvlManager.curLevel++;
-            killCount = 0;
-            debugCount = 0;
-            print("Prepare Phase");
             lvlManager.curPhase = Phase.Prepare;
         }
 
