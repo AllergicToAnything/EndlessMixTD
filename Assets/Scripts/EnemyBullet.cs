@@ -8,10 +8,13 @@ public class EnemyBullet : MonoBehaviour
     void Update()
     {
         this.transform.Translate(0, 0, 1 * Time.deltaTime);
+
+        Invoke("DestroyThis",2f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void DestroyThis()
     {
         Destroy(gameObject);
     }
+
 }

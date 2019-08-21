@@ -7,11 +7,13 @@ public class Detector : Unit
     public float initDamage;
     Tower tower;
     public List<GameObject> invader = new List<GameObject>();
+    Obsticles obsticles;
    
 
     private void OnEnable()
     {
         tower = this.gameObject.GetComponent<Tower>();
+        obsticles = gameObject.GetComponentInChildren<Obsticles>();
         hp = 1;
         initDamage = damage;
     }
@@ -23,10 +25,7 @@ public class Detector : Unit
         {
            invader.Add(other.gameObject);
         }
-        if(other.gameObject.tag == "EnemyBullet")
-        {
-            TakeDamage(1);
-        }
+        
         
     }
 

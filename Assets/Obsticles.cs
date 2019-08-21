@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Obsticles : MonoBehaviour
 {
-    Tower tower;
+    public Tower tower;
     float hp = 1;
     float initDamage;
     float damage;
@@ -17,16 +17,18 @@ public class Obsticles : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "EnemyBullet") { 
-        TakeDamage(1);
-    }
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+            TakeDamage(1);
+        }
     }
 
 
     public void TakeDamage(float damageAmount)
     {
+        Debug.Log("Teeheh");
         hp -= damageAmount;
         if (hp <= 0)
         {
@@ -38,9 +40,10 @@ public class Obsticles : MonoBehaviour
             tower.towerLevel = 0;
             tower.ableToAttack = false;
             tower.platform.towerStates = State.I;
+            tower.platform.isOccupied = false;
             foreach (MaterialChanger mc in tower.allChild)
             {
-                mc.ChangeButton();
+                mc.TurnToInvisibleState();
             }         
 
 

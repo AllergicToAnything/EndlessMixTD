@@ -39,10 +39,32 @@ public class MaterialChanger : MonoBehaviour
 
     }
 
+    public void TurnToInvisibleState()
+    {
+        platform.towerStates = State.I;
+        if (this.gameObject.tag == "Rim")
+        {
+            rend.sharedMaterial = selection;
+        }
+        if (this.gameObject.tag == "BaseWell")
+        {
+            rend.sharedMaterial = selection;
+        }
+        if (this.gameObject.tag == "Energy")
+        {
+            rend.sharedMaterial = selection;
+        }
+        if (this.gameObject.tag == "EnergyWell")
+        {
+            rend.sharedMaterial = selection;
+        }
+    }
+
+
     public void ChangeButton()
     {
         
-        if (platform.towerStates == State.P|| platform.towerStates == State.I)
+        if (platform.towerStates == State.P)
         {
             if (this.gameObject.tag == "Rim")
             {

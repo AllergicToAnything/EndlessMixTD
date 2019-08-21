@@ -89,7 +89,7 @@ public class Enemy : Unit
         velocity = agent.velocity.magnitude / agent.speed;
         Move();
         Invoke("CheckObstacles",2f);
-
+        Instantiate(bullet, this.transform.position, this.transform.rotation);
         if (atkCD > 0) { atkCD -= Time.deltaTime; }
         if (atkCD < 0) { atkCD = 0; }
     }
@@ -107,7 +107,7 @@ public class Enemy : Unit
                 {
                     if (atkCD == 0)
                     {
-                        Invoke("CheckStun", 2f);
+                        Invoke("CheckStun", 1f);
                     }
                 }
             }
@@ -138,7 +138,7 @@ public class Enemy : Unit
 
     IEnumerator CheckStun2()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         if (this.velocity == 0)
         {
             print("Obsticle Detected");
