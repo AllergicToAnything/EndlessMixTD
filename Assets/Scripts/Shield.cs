@@ -22,7 +22,8 @@ public class Shield : Unit
             spawner.debugCount++;
             hp -= 1;
             Destroy(other.gameObject);
-            if(this.hp <= -1) { loseScreen.SetActive(true); Destroy(this.gameObject); }
+            loseScreen.GetComponentInChildren<Text>().text = "Congratulations! \n You've Completed "+ spawner.lvlManager.curLevel.ToString() + " waves!";
+            if (this.hp <= -1) { loseScreen.SetActive(true); Destroy(this.gameObject); }
             
             
         }
