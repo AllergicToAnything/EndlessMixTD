@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lvlManager.curPhase == Phase.Prepare)
+        if (lvlManager.curPhase == Phase.Prepare|| lvlManager.curPhase==Phase.Prebattle)
         {
             spawnCount = 0;
             killCount = 0;
@@ -100,10 +100,11 @@ public class Spawner : MonoBehaviour
         allClear.gameObject.SetActive(false);
         if (lvlManager.curPhase == Phase.Battle)
         {
+            /*
             if (killCount >= spawnLimitPerLevel)
             {
                 manager.gold++;
-            }
+            }*/
             if (lvlManager.curLevel > 39)
             {
                 manager.gold += (lvlManager.curLevel + 1);

@@ -50,9 +50,12 @@ public class Enemy : Unit
 
     public float atkCD;
     float atkSpd = 3f;
+
+    bool check = true;
     
     void Start()
     {
+       
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
@@ -88,8 +91,7 @@ public class Enemy : Unit
         Debug.DrawRay(transform.position, transform.forward * rayLength, Color.red);
         velocity = agent.velocity.magnitude / agent.speed;
         Move();
-        Invoke("CheckObstacles",2f);
-        Instantiate(bullet, this.transform.position, this.transform.rotation);
+        Invoke("CheckObstacles", 2f);
         if (atkCD > 0) { atkCD -= Time.deltaTime; }
         if (atkCD < 0) { atkCD = 0; }
     }
@@ -158,14 +160,27 @@ public class Enemy : Unit
         }
     }
 
-    
+
 
     public new void TakeDamage(float damageAmount)
     {
-        hp -= damageAmount;
-        hitted.gameObject.SetActive(true);
-        StartCoroutine(Hitted());
-        if (hp <= 0) { spawner.killCount++;  spawner.debugCount++; Destroy(this.gameObject); } // Die
+        if (hp > 0)
+        {
+            hp -= damageAmount;
+            hitted.gameObject.SetActive(true);
+            StartCoroutine(Hitted());
+            if (hp <= 0)
+            {
+                check = false;
+                Destroy(this.gameObject);
+                if (check == false)
+                {
+                    spawner.killCount++; spawner.debugCount++;
+
+                }
+
+            } // Die
+        }
     }
 
    
