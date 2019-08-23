@@ -12,7 +12,7 @@ public class Detector : Unit
     public int killCount;
     int killCountTarget;
     public int lvlUPPerKill = 30;
-    public Text killCountTxt;
+    //public Text killCountTxt;
 
     private void Update()
     {
@@ -22,7 +22,7 @@ public class Detector : Unit
             killCountTarget = killCount;
             tower.platform.TowerElementAttribute();
         }
-        killCountTxt.text = "Killed : " + killCount.ToString();
+        //killCountTxt.text = "Killed : " + killCount.ToString();
     }
 
     private void OnEnable()
