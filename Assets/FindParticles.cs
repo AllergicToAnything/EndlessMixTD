@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Core : MonoBehaviour
+public class FindParticles : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,8 +15,4 @@ public class Core : MonoBehaviour
     {
         
     }
-
-    // die when hp = 0
-
-    // play destroy animation when die
 }

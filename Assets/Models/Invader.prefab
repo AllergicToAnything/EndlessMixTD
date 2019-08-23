@@ -553,7 +553,8 @@ MonoBehaviour:
   isPoisoned: 0
   isPoisoning: 0
   curSpeed: 0
-  enemyBullet: {fileID: 0}
+  enemyBullet: {fileID: 756992481739789305, guid: c279b08616969854ba9792a4ac01639c,
+    type: 3}
   bullet: {fileID: 0}
   atkCD: 0
 --- !u!195 &3527682950876418088

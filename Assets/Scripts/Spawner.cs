@@ -141,8 +141,9 @@ public class Spawner : MonoBehaviour
             foreach(GameObject r in bullet)
             {
                 Destroy(r.gameObject);
+                
             }
-           
+            
         }
 
     }

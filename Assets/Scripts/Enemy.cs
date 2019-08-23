@@ -80,6 +80,10 @@ public class Enemy : Unit
         if(lvlManager.curLevel < 30)
         {
             hp = hp + 1 + ((lvlManager.curLevel * lvlManager.curLevel) / 1.4f);
+            if (lvlManager.curLevel > 14)
+            {
+                hp = hp + 1 + ((lvlManager.curLevel * lvlManager.curLevel) /1.2f);
+            }
         }
         else
         {

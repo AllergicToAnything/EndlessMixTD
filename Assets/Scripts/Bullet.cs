@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     Rigidbody rb;
     public bool isDying = false;
 
+    public FindParticles[] allChild;
 
 
     private void OnEnable()
@@ -21,6 +22,11 @@ public class Bullet : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         mr = this.GetComponent<MeshRenderer>();
         mr.enabled = false;
+        allChild = GetComponentsInChildren<FindParticles>();
+        foreach (FindParticles r in allChild)
+        {
+            r.gameObject.SetActive(false);
+        }
 
     }
 
@@ -79,11 +85,27 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.tag == "Invader")
+    
+        if(other.tag == "Invader")
         {
             mr.enabled = false;
+            
+            foreach (FindParticles r in allChild)
+            {
+                r.gameObject.SetActive(true);
+                StartCoroutine(TurnOffParticles());
+            }
+        }
+    }
+
+    IEnumerator TurnOffParticles()
+    {
+        yield return new WaitForSeconds(.8f);
+        foreach (FindParticles r in allChild)
+        {
+            r.gameObject.SetActive(false);
         }
     }
 
