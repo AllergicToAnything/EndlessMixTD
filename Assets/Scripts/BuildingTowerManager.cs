@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -30,6 +31,16 @@ public class BuildingTowerManager : MonoBehaviour
         goldTextOutput.text = "Gold : "+gold.ToString();
         
         
+    }
+
+    public void DoQuit()
+    {
+        Application.Quit();
+    }
+
+    public void DoReplay()
+    {
+        SceneManager.LoadScene(1);
     }
     
     public void WhenClick()

@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     public float enemySpeed = 1f;
 
     public Phase curPhase;
+
+    public Shield barrier;
     
     public Spawner spawner;
     public float prebattleCD = 5f;

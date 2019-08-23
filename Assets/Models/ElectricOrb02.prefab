@@ -99,7 +99,7 @@ MonoBehaviour:
   thisElement: 1
   isDying: 0
   allChild: []
-  spawner: {fileID: 4843670339608497581, guid: 6f302ea57e5f90a48b996d707effe4c2, type: 3}
+  spawner: {fileID: 409928867699941176, guid: 86a04fc5a8790924782de76df9787756, type: 3}
 --- !u!65 &1938586419188377910
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ MonoBehaviour:
   thisElement: 0
   isDying: 0
   allChild: []
-  spawner: {fileID: 4843670339608497581, guid: 6f302ea57e5f90a48b996d707effe4c2, type: 3}
+  spawner: {fileID: 409928867699941176, guid: 86a04fc5a8790924782de76df9787756, type: 3}
 --- !u!65 &1938586419188377910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2347606880033668366
 Rigidbody:

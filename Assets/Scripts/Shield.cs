@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class Shield : Unit
 {
+    public LevelManager lvlManager;
     public Text HP;
     public GameObject loseScreen;
 
     private void Update()
     {
         HP.text = "Lives : " + hp.ToString();
+
+
     }
 
     public Spawner spawner;
@@ -23,7 +26,7 @@ public class Shield : Unit
             hp -= 1;
             Destroy(other.gameObject);
             loseScreen.GetComponentInChildren<Text>().text = "Congratulations! \n You've Completed "+ spawner.lvlManager.curLevel.ToString() + " waves!";
-            if (this.hp <= -1) { loseScreen.SetActive(true); Destroy(this.gameObject); }
+            if (this.hp <= -1) { lvlManager.gameSpeed = 0f; loseScreen.SetActive(true); Destroy(this.gameObject); }
             
             
         }
