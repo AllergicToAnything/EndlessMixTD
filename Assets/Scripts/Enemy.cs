@@ -188,12 +188,13 @@ public class Enemy : Unit
                 {
                     spawner.killCount++; spawner.debugCount++;
                     bullet.GetComponent<Bullet>().detector.killCount++;
-                    bullet.gameObject.SetActive(true);
+                    Destroy(this.gameObject);
+                    //Destroy(bullet);
                     
 
                 }
 
-                Destroy(this.gameObject);
+               
             } // Die
         }
     }
@@ -260,7 +261,8 @@ public class Enemy : Unit
                 }
                
 
-            }  
+            } 
+            
         }
     }
 

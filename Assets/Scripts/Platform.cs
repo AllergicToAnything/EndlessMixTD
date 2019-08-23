@@ -54,26 +54,26 @@ public class Platform : MonoBehaviour
 
         if (elements == Element.Fire)
         {
-            tower.attackCooldown *= .51f - .002f * tower.towerLevel;
+            tower.attackCooldown = .51f - .001f * tower.towerLevel;
             detector.damage = detector.initDamage * (1.3f * tower.towerLevel);
             tower.fireDPS = detector.damage / 2;
             tower.fireDPSLimitCount = 7 + tower.towerLevel;
         }
         if (elements == Element.Electric)
         {
-            tower.attackCooldown *= .32f - .003f * tower.towerLevel;
+            tower.attackCooldown = .32f - .001f * tower.towerLevel;
             detector.damage = detector.initDamage * 1.1f * tower.towerLevel;
 
         }
         if (elements == Element.Ice)
         {
-            tower.attackCooldown *= 1.505f - .0075f * tower.towerLevel;
+            tower.attackCooldown = 1.505f - .05f * tower.towerLevel;
             detector.damage = detector.initDamage * 2 * tower.towerLevel;
             tower.icySlowSpeed =( tower.initIcySlowSpeed - .05f*tower.towerLevel); 
         }
         if (elements == Element.Poison)
         {
-            tower.attackCooldown *= .88f - .005f * tower.towerLevel;
+            tower.attackCooldown = .88f - .003f * tower.towerLevel;
             detector.damage = detector.initDamage * 1.5f * tower.towerLevel;
             tower.poisonDPS = detector.damage*1.5f;
             tower.poisonDPSLimitCount = 3 + tower.towerLevel;

@@ -85,8 +85,8 @@ public class Tower : MonoBehaviour
         if(cd < 0) { cd = 0; } 
         if (ableToAttack == true && cd == 0)
         {
-            if(attackCooldown <=.009f)
-            { attackCooldown = .01f; }
+            if(attackCooldown <=.05f)
+            { attackCooldown = .049f; }
             if (icySlowSpeed <= .014f)
             {
                 icySlowSpeed = .015f;

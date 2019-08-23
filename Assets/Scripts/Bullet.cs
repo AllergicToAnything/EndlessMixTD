@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     public bool isDying = false;
 
     public FindParticles[] allChild;
-
+    public Spawner spawner;
 
     private void OnEnable()
     {
@@ -32,18 +32,17 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (target) { transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime); }
+        if (target)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);            
+        }
         if (rb.velocity.y != 0) { mr.enabled = true; }
         if (rb.velocity.x != 0) { mr.enabled = true; }
         if (rb.velocity.z != 0) { mr.enabled = true; }
-        if (isDying) { DestroyThis(); }
 
     }
 
-    public void DestroyThis()
-    {
-        Destroy(this.gameObject);
-    }
+   
 
 
     void Delay()
@@ -53,6 +52,12 @@ public class Bullet : MonoBehaviour
             if (detector.invader[0] == null)
             {
                 detector.invader.RemoveAt(0);
+                
+                foreach (GameObject r in spawner.bullet)
+                {
+                    Destroy(r.gameObject);
+
+                }
             }
             else
             {

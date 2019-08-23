@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Detector : Unit
 {
@@ -10,15 +11,18 @@ public class Detector : Unit
     Obsticles obsticles;
     public int killCount;
     int killCountTarget;
+    public int lvlUPPerKill = 30;
+    public Text killCountTxt;
 
     private void Update()
     {
-        if (killCount == killCountTarget + 30)
+        if (killCount == killCountTarget + lvlUPPerKill)
         {
             tower.towerLevel++;
             killCountTarget = killCount;
             tower.platform.TowerElementAttribute();
         }
+        killCountTxt.text = "Killed : " + killCount.ToString();
     }
 
     private void OnEnable()
