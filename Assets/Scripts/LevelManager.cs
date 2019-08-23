@@ -8,9 +8,9 @@ public enum Phase { Prepare,Prebattle,Battle }
 public class LevelManager : MonoBehaviour
 {
 
-    public int curLevel = 0;
+    public float curLevel = 0;
     public float gameSpeed = 1;
-    public float enemySpeed = 2f;
+    public float enemySpeed = 1f;
 
     public Phase curPhase;
     
@@ -30,11 +30,13 @@ public class LevelManager : MonoBehaviour
         if(curLevel==1){curPhase = Phase.Prepare;}
         pbcd = prebattleCD;
         pcd = PrepareCD;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Time.timeScale = gameSpeed;
         if (curPhase == Phase.Prepare)
         {

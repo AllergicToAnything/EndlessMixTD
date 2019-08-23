@@ -32,6 +32,7 @@ public class Obsticles : MonoBehaviour
         hp -= damageAmount;
         if (hp <= 0)
         {
+            
             tower.detector.invader.Clear();
             tower.platform.elements = Element.None;
             tower.thisElement = Element.None;
@@ -41,6 +42,9 @@ public class Obsticles : MonoBehaviour
             tower.ableToAttack = false;
             tower.platform.towerStates = State.I;
             tower.platform.isOccupied = false;
+            tower.icySlowSpeed = tower.initIcySlowSpeed;
+            tower.poisonSlowSpeed = tower.initPoisonSlowSpeed;
+            
             foreach (MaterialChanger mc in tower.allChild)
             {
                 mc.TurnToInvisibleState();

@@ -11,18 +11,20 @@ public class Spawner : MonoBehaviour
     public GameObject invader;
     public float cd = 3;
     public float spawnRate = 3;
-    public int spawnLimitPerLevel = 20;
-    public int spawnCount = 0;    
-    public int addSpawnLimitEveryLevel = 5;
-    public int slcd;
+    public float spawnLimitPerLevel = 20;
+    public float spawnCount = 0;    
+    public float addSpawnLimitEveryLevel = 5;
+    public float slcd;
     GameObject go;
     public int killCount = 0;
     public GameObject allClear;
-    
 
     public int debugCount = 0;
     public bool countLock = false;
 
+    public GameObject[] bullet;
+
+    // public GameObject allTowers;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +76,8 @@ public class Spawner : MonoBehaviour
                 
                 if (debugCount>=spawnLimitPerLevel)
                 {
+
+                    bullet = GameObject.FindGameObjectsWithTag("Bullet");
                     StartCoroutine(LevelClear());
                 }
                 
@@ -85,8 +89,6 @@ public class Spawner : MonoBehaviour
 
     IEnumerator LevelClear()
     {
-        
-        
         if (killCount != spawnLimitPerLevel)
         {
             allClear.GetComponentInChildren<Text>().text = "Wave Done!";
@@ -94,12 +96,12 @@ public class Spawner : MonoBehaviour
 
         allClear.gameObject.SetActive(true);
 
-        
 
         yield return new WaitForSeconds(5f);
         allClear.gameObject.SetActive(false);
         if (lvlManager.curPhase == Phase.Battle)
         {
+            int curLvl = Mathf.RoundToInt(lvlManager.curLevel);
             /*
             if (killCount >= spawnLimitPerLevel)
             {
@@ -107,7 +109,7 @@ public class Spawner : MonoBehaviour
             }*/
             if (lvlManager.curLevel > 39)
             {
-                manager.gold += (lvlManager.curLevel + 1);
+                manager.gold += (curLvl + 1);
             }
             else if (lvlManager.curLevel > 29)
             {
@@ -135,6 +137,12 @@ public class Spawner : MonoBehaviour
             allInvaders = new List<GameObject>();
             lvlManager.curLevel++;
             lvlManager.curPhase = Phase.Prepare;
+            lvlManager.enemySpeed = 1+(lvlManager.curLevel / 11f);
+            foreach(GameObject r in bullet)
+            {
+                Destroy(r.gameObject);
+            }
+           
         }
 
     }

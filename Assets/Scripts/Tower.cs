@@ -11,9 +11,6 @@ public class Tower : MonoBehaviour
     public Platform platform;
     public BuildingTowerManager manager;
     public Element thisElement;
-    public GameObject target;
-    public GameObject curTarget;
-    public Bullet bullet;
     public bool ableToAttack = false;
     public GameObject[] orb;
     public List<Bullet> allOrbs = new List<Bullet>();
@@ -24,22 +21,33 @@ public class Tower : MonoBehaviour
     public int cost = 1;
     public float miniStunDur = .05f;
     public float icySlowDur = 1f;
+    public float icySlowSpeed = .5f;
     public float poisonSlowDur = 1.5f;
+    public float poisonSlowSpeed = .7f;
     public float fireDPS = .5f;
+    public float poisonDPS = .5f;
+    public int poisonDPSLimitCount;
     public int fireDPSLimitCount;
-   
 
+    public Transform shootingPos;
+
+    public float initIcySlowSpeed;
+    public float initPoisonSlowSpeed;
 
     private void OnEnable()
     {
+        initIcySlowSpeed = icySlowSpeed;
+        initPoisonSlowSpeed = poisonSlowSpeed;
         thisElement = Element.None;
         allChild = GetComponentsInChildren<MaterialChanger>();
         detector = GetComponent<Detector>();
+        shootingPos = GetComponentInChildren<Empty>().gameObject.transform;
     }
 
     private void Update()
     {
         AttackCondition();
+
     }
 
     public void BuildTower()
@@ -62,13 +70,11 @@ public class Tower : MonoBehaviour
         }       
             Attack();       
     }
-      
     // Attack within an area
     public void Attack()
     {
-        if (allOrbs.Count > 20)
+        if (allOrbs.Count > 5)
         {
-            Destroy(allOrbs[0]);
             allOrbs.RemoveAt(0);
         }
 
@@ -79,32 +85,41 @@ public class Tower : MonoBehaviour
         if(cd < 0) { cd = 0; } 
         if (ableToAttack == true && cd == 0)
         {
-            if(attackCooldown <=0)
-            { attackCooldown = .001f; }
+            if(attackCooldown <=.009f)
+            { attackCooldown = .01f; }
+            if (icySlowSpeed <= .014f)
+            {
+                icySlowSpeed = .015f;
+            }
+            if (poisonSlowSpeed <= .021f)
+            {
+                poisonSlowSpeed = .022f;
+            }
             GameObject towerOrb;
-            if (platform.elements == Element.Fire)
-            {
-                towerOrb = Instantiate(orb[0], this.transform.position, this.transform.rotation);
-                allOrbs.Add(towerOrb.GetComponent<Bullet>());
-            }
-            if (platform.elements == Element.Electric)
-            {
-                towerOrb = Instantiate(orb[1], this.transform.position, this.transform.rotation);
-                allOrbs.Add(towerOrb.GetComponent<Bullet>());
-            }
-            if (platform.elements == Element.Ice)
-            {
-                towerOrb = Instantiate(orb[2], this.transform.position, this.transform.rotation);
-                allOrbs.Add(towerOrb.GetComponent<Bullet>());
-            }
-            if (platform.elements == Element.Poison)
-            {
-                towerOrb = Instantiate(orb[3], this.transform.position, this.transform.rotation);
-                allOrbs.Add(towerOrb.GetComponent<Bullet>());
-            }
+            
+                if (platform.elements == Element.Fire)
+                {
+                    towerOrb = Instantiate(orb[0], shootingPos.transform.position, shootingPos.transform.rotation);
+                    allOrbs.Add(towerOrb.GetComponent<Bullet>());
+                }
+                if (platform.elements == Element.Electric)
+                {
+                    towerOrb = Instantiate(orb[1], shootingPos.transform.position, shootingPos.transform.rotation);
+                    allOrbs.Add(towerOrb.GetComponent<Bullet>());
+                }
+                if (platform.elements == Element.Ice)
+                {
+                    towerOrb = Instantiate(orb[2], shootingPos.transform.position, shootingPos.transform.rotation);
+                    allOrbs.Add(towerOrb.GetComponent<Bullet>());
+                }
+                if (platform.elements == Element.Poison)
+                {
+                    towerOrb = Instantiate(orb[3], shootingPos.transform.position, shootingPos.transform.rotation);
+                    allOrbs.Add(towerOrb.GetComponent<Bullet>());
+                }
+            
             
             cd = attackCooldown;
-            curTarget = target;
         } // Choose Attack Orb to Instantiate
         
             foreach (Bullet bullet in allOrbs)
@@ -117,7 +132,7 @@ public class Tower : MonoBehaviour
    public void LevelUP()
     {
         towerLevel++;
-        cost= towerLevel*towerLevel;
+       // cost= towerLevel*towerLevel;
     }
 
 

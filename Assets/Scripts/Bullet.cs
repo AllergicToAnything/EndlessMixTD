@@ -8,14 +8,37 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed = 10f;
     Transform target;
     public float bulletDamage;
-    public float decayTime = 1f;
     public Element thisElement;
+    MeshRenderer mr;
+    Rigidbody rb;
+    public bool isDying = false;
+
+
 
     private void OnEnable()
     {
-        Invoke("Delay", 0.005f);
-        Invoke("Decay", decayTime );
+        Invoke("Delay", 0.001f);
+        rb = this.GetComponent<Rigidbody>();
+        mr = this.GetComponent<MeshRenderer>();
+        mr.enabled = false;
+
     }
+
+    private void Update()
+    {
+        if (target) { transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime); }
+        if (rb.velocity.y != 0) { mr.enabled = true; }
+        if (rb.velocity.x != 0) { mr.enabled = true; }
+        if (rb.velocity.z != 0) { mr.enabled = true; }
+        if (isDying) { DestroyThis(); }
+
+    }
+
+    public void DestroyThis()
+    {
+        Destroy(this.gameObject);
+    }
+
 
     void Delay()
     {
@@ -33,21 +56,8 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void Decay()
-    {
-        GetComponent<MeshRenderer>().enabled = !GetComponent<MeshRenderer>().enabled;
-        Invoke("DestroyThis", decayTime);
-    }
-
-    void DestroyThis()
-    {
-        Destroy(this.gameObject);
-    }
-
-    private void Update()
-    {
-        if (target) { transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime); }
-    }
+   
+    
 
    public void AllElement()
     {
@@ -69,5 +79,41 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Invader")
+        {
+            mr.enabled = false;
+        }
+    }
+
+    /*
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.GetComponent<Enemy>().hp > 0)
+        {
+
+                if (collision.collider.GetComponent<Enemy>().hp <= 0)
+                {
+                    detector.killCount++;
+                isDying = true;
+                }
+           
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.GetComponent<Enemy>().hp > 0)
+        {
+
+            if (collision.collider.GetComponent<Enemy>().hp <= 0)
+            {
+                detector.killCount++;
+                isDying = true;
+            }
+
+        }
+    }*/
 
 }

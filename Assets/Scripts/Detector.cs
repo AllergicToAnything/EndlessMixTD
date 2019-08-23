@@ -8,7 +8,18 @@ public class Detector : Unit
     Tower tower;
     public List<GameObject> invader = new List<GameObject>();
     Obsticles obsticles;
-   
+    public int killCount;
+    int killCountTarget;
+
+    private void Update()
+    {
+        if (killCount == killCountTarget + 30)
+        {
+            tower.towerLevel++;
+            killCountTarget = killCount;
+            tower.platform.TowerElementAttribute();
+        }
+    }
 
     private void OnEnable()
     {
