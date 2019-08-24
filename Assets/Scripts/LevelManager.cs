@@ -84,6 +84,26 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void PauseTheGame()
+    {
+        gameSpeed = 0f;
+    }
+
+    public void Faster2()
+    {
+        gameSpeed = 2f;
+    }
+
+    public void Faster10()
+    {
+        gameSpeed = 10f;
+    }
+
+    public void NormalSpeed()
+    {
+        gameSpeed = 1f;
+    }
+
     // if this wave never leak + 1 gold
 
     

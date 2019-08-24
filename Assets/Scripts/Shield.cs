@@ -33,4 +33,9 @@ public class Shield : Unit
     }
     // Shield = HP
     // destroy this when hp = 1
+
+    public void AddHP()
+    {
+        hp++;
+    }
 }

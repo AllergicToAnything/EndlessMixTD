@@ -167,7 +167,10 @@ public class BuildingTowerManager : MonoBehaviour
         }
     }
 
-
+    public void AddGold()
+    {
+        gold++;
+    }
 
     
     IEnumerator NotEnoughGold()
