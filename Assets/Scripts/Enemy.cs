@@ -46,8 +46,16 @@ public class Enemy : Unit
     float poisonDPSInterval = .8f;
     float slowByPoisonCD;
 
+    float damageTaken;
+    float burnDamage;
+    float poisonDamage;
+
     public GameObject enemyBullet;
     public Bullet bullet;
+
+    public Detector curDetector;
+
+    int killCount;
 
     public float atkCD;
     float atkSpd = 3f;
@@ -56,7 +64,6 @@ public class Enemy : Unit
     
     void Start()
     {
-       
         isStunned = false;
         agent = GetComponent<NavMeshAgent>();
         lineRenderer = GetComponent<LineRenderer>();
@@ -64,8 +71,6 @@ public class Enemy : Unit
         curSpeed = GetComponent<NavMeshAgent>().speed;
         Invoke("Hp",0.5f);
         atkCD = atkSpd;
-        
-      
     }
 
     void Move()
@@ -187,13 +192,9 @@ public class Enemy : Unit
                 if (check == false)
                 {
                     spawner.killCount++; spawner.debugCount++;
-                    bullet.GetComponent<Bullet>().detector.killCount++;
+                    curDetector.killCount++;
                     Destroy(this.gameObject);
-                    //Destroy(bullet);
-                    
-
                 }
-
                
             } // Die
         }
@@ -205,20 +206,23 @@ public class Enemy : Unit
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            bullet = other.gameObject.GetComponent<Bullet>();
-            TakeDamage(bullet.bulletDamage);
+            bullet = other.GetComponent<Bullet>();
+            curDetector = bullet.detector;
+            
+            damageTaken = bullet.bulletDamage;
+            TakeDamage(damageTaken);
             if (bullet.thisElement == Element.Fire)
             {
-                isBurned = true;
-                if (isBurned == true)
-                {
-                    fireDPSCount = 1;
-                    fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
-                    fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
-                    fireDPSCD = fireDPSInterval;
-                }
-
-
+                    isBurned = true;
+                    if (isBurned == true)
+                    {
+                        fireDPSCount = 1;
+                        fireDPSLimitCount = bullet.detector.GetComponent<Tower>().fireDPSLimitCount;
+                        fireDPS = bullet.detector.GetComponent<Tower>().fireDPS;
+                        burnDamage = fireDPS;
+                        fireDPSCD = fireDPSInterval;
+                    }
+            
             }
             if (bullet.thisElement == Element.Electric)
             {
@@ -240,28 +244,30 @@ public class Enemy : Unit
                 }
                                 
             }
-            if (bullet.thisElement == Element.Poison)
-            {
-                isSlowByPoison = true;
-                isPoisoned = true;
-                if (isPoisoned == true)
+                if (bullet.thisElement == Element.Poison)
                 {
-                    poisonDPSCount = 1;
-                    poisonDPSLimitCount = bullet.detector.GetComponent<Tower>().poisonDPSLimitCount;
-                    poisonDPS = bullet.detector.GetComponent<Tower>().poisonDPS;
-                    poisonDPSCD = poisonDPSInterval;
-                }
+                    isSlowByPoison = true;
+                    isPoisoned = true;
 
-                if (isSlowByPoison == true)
-                {
-                    slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
-                    poisonSlowSpeed = bullet.detector.GetComponent<Tower>().poisonSlowSpeed;
-                    agent.speed *= poisonSlowSpeed;
-                    
-                }
-               
+                    if (isPoisoned == true)
+                    {
+                        poisonDPSCount = 1;
+                        poisonDPSLimitCount = bullet.detector.GetComponent<Tower>().poisonDPSLimitCount;
+                        poisonDPS = bullet.detector.GetComponent<Tower>().poisonDPS;
+                        poisonDamage = poisonDPS;
+                        poisonDPSCD = poisonDPSInterval;
+                    }
 
-            } 
+                    if (isSlowByPoison == true)
+                    {
+                        slowByPoisonCD = bullet.detector.GetComponent<Tower>().poisonSlowDur;
+                        poisonSlowSpeed = bullet.detector.GetComponent<Tower>().poisonSlowSpeed;
+                        agent.speed *= poisonSlowSpeed;
+
+                    }
+
+                }
+            
             
         }
     }
@@ -318,7 +324,7 @@ public class Enemy : Unit
         isPoisoning = true;
         if (isPoisoning == true)
         {
-            TakeDamage(poisonDPS);
+            TakeDamage(poisonDamage);
             print("Poison " + poisonDPSCount.ToString());
             hitted.gameObject.SetActive(true);
             StartCoroutine(Hitted());
@@ -343,7 +349,7 @@ public class Enemy : Unit
         isBurning = true;
         if (isBurning == true)
         {
-            TakeDamage(fireDPS);
+            TakeDamage(burnDamage);
             print("Burned " + fireDPSCount.ToString());
             hitted.gameObject.SetActive(true);
             StartCoroutine(Hitted());

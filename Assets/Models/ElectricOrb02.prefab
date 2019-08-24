@@ -115,7 +115,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5091926914595737384
 Rigidbody:
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2526245334556745760}
   - component: {fileID: 4100230422193125262}
   m_Layer: 0
-  m_Name: BlueParticle
+  m_Name: ElectricParticle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4978,7 +4978,7 @@ GameObject:
   - component: {fileID: 6123508332661305788}
   - component: {fileID: 989842301061719183}
   m_Layer: 0
-  m_Name: RedParticle
+  m_Name: ElectricParticle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10008,7 +10008,7 @@ GameObject:
   - component: {fileID: 6361667922225465924}
   - component: {fileID: 2113611041957700161}
   m_Layer: 0
-  m_Name: WhiteParticle
+  m_Name: ElectricParticle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

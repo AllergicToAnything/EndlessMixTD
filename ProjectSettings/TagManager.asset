@@ -15,6 +15,10 @@ TagManager:
   - Barrier
   - EnemyBullet
   - Obsticles
+  - Fire
+  - Ice
+  - Poison
+  - Electric
   layers:
   - Default
   - TransparentFX

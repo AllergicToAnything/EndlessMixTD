@@ -115,7 +115,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2347606880033668366
 Rigidbody:
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5272862474131442484}
   - component: {fileID: 7486254957902113375}
   m_Layer: 0
-  m_Name: BlueParticle
+  m_Name: FireParticle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5113,7 +5113,7 @@ GameObject:
   - component: {fileID: 638930274286984403}
   - component: {fileID: 1732435149307873306}
   m_Layer: 0
-  m_Name: WhiteParticle
+  m_Name: FireParticle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14777,7 +14777,7 @@ GameObject:
   - component: {fileID: 8220802305550381913}
   - component: {fileID: 3218201485838146443}
   m_Layer: 0
-  m_Name: RedParticle
+  m_Name: FireParticle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

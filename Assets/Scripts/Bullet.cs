@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public float bulletDamage;
     public Element thisElement;
     MeshRenderer mr;
-    Rigidbody rb;
+    public Rigidbody rb;
     public bool isDying = false;
 
     public FindParticles[] allChild;
@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
         {
             r.gameObject.SetActive(false);
         }
+        
 
     }
 
@@ -56,8 +57,9 @@ public class Bullet : MonoBehaviour
                 foreach (GameObject r in spawner.bullet)
                 {
                     Destroy(r.gameObject);
-
+                    
                 }
+                
             }
             else
             {
@@ -102,6 +104,7 @@ public class Bullet : MonoBehaviour
                 r.gameObject.SetActive(true);
                 StartCoroutine(TurnOffParticles());
             }
+            Destroy(this.gameObject);
         }
     }
 

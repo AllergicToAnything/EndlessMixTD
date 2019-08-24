@@ -2839,7 +2839,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 2
     m_BestFit: 1
@@ -4537,7 +4537,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 2
     m_BestFit: 1
@@ -6154,7 +6154,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -6738,7 +6738,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 3
     m_BestFit: 1
@@ -6826,7 +6826,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -7084,7 +7084,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 2
     m_BestFit: 1
@@ -7308,7 +7308,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 3
     m_BestFit: 1
@@ -9391,7 +9391,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 6cfceb4dc7410344e9c7c38dd5244aae, type: 3}
+    m_Font: {fileID: 12800000, guid: cb32fbbdab362ae4ca3bb599d22897c1, type: 3}
     m_FontSize: 50
     m_FontStyle: 2
     m_BestFit: 1
@@ -14544,6 +14544,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4843670339608497583, guid: 6f302ea57e5f90a48b996d707effe4c2,
         type: 3}
+    - target: {fileID: 3249660010210544207, guid: d410f04bf627f744fb644b1904743154,
+        type: 3}
+      propertyPath: fireDPS
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3249660010352745776, guid: d410f04bf627f744fb644b1904743154,
         type: 3}
       propertyPath: platform
@@ -22917,6 +22922,10 @@ PrefabInstance:
     - target: {fileID: 157860659, guid: d410f04bf627f744fb644b1904743154, type: 3}
       propertyPath: lvlUPPerKill
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 157860659, guid: d410f04bf627f744fb644b1904743154, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 425655764, guid: d410f04bf627f744fb644b1904743154, type: 3}
       propertyPath: lvlUPPerKill
