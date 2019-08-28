@@ -236,8 +236,7 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletDamage: 0
   thisElement: 3
-  isDying: 0
-  allChild: []
+  rb: {fileID: 0}
   spawner: {fileID: 409928867699941176, guid: 86a04fc5a8790924782de76df9787756, type: 3}
 --- !u!65 &1938586419188377910
 BoxCollider:
@@ -279,14 +278,13 @@ GameObject:
   - component: {fileID: 7409819134126262094}
   - component: {fileID: 5104849801698343764}
   - component: {fileID: 6115769357318203761}
-  - component: {fileID: 7024272452953330868}
   m_Layer: 0
   m_Name: IceParticle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7409819134126262094
 Transform:
   m_ObjectHideFlags: 0
@@ -5088,18 +5086,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7024272452953330868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3122909742925277788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3144116750260865497
 GameObject:
   m_ObjectHideFlags: 0
@@ -5111,14 +5097,13 @@ GameObject:
   - component: {fileID: 2072878001771184688}
   - component: {fileID: 7277696510970902125}
   - component: {fileID: 5279203089505562279}
-  - component: {fileID: 6335168210194889506}
   m_Layer: 0
   m_Name: IceParticle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2072878001771184688
 Transform:
   m_ObjectHideFlags: 0
@@ -9920,18 +9905,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &6335168210194889506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3144116750260865497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4841672065950632481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9943,14 +9916,13 @@ GameObject:
   - component: {fileID: 4718769736092545405}
   - component: {fileID: 2543107536065856222}
   - component: {fileID: 2489661796462440451}
-  - component: {fileID: 8775636854815091500}
   m_Layer: 0
   m_Name: IceParticle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4718769736092545405
 Transform:
   m_ObjectHideFlags: 0
@@ -14752,18 +14724,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &8775636854815091500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4841672065950632481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6580509622229538700
 GameObject:
   m_ObjectHideFlags: 0
@@ -14775,14 +14735,13 @@ GameObject:
   - component: {fileID: 6163867479301292298}
   - component: {fileID: 6097785217244816944}
   - component: {fileID: 8659192573117571482}
-  - component: {fileID: 8868469363189377106}
   m_Layer: 0
   m_Name: BeamOfLightParticle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6163867479301292298
 Transform:
   m_ObjectHideFlags: 0
@@ -19584,15 +19543,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &8868469363189377106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6580509622229538700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

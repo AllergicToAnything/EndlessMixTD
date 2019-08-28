@@ -11,9 +11,10 @@ public class Bullet : MonoBehaviour
     public Element thisElement;
     MeshRenderer mr;
     public Rigidbody rb;
-    public bool isDying = false;
+    GameObject[] particles; // 0 = Fire 1 = Ice 2 = Electric 3 = Poison
+   
 
-    public FindParticles[] allChild;
+
     public Spawner spawner;
 
     private void OnEnable()
@@ -22,13 +23,6 @@ public class Bullet : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         mr = this.GetComponent<MeshRenderer>();
         mr.enabled = false;
-        allChild = GetComponentsInChildren<FindParticles>();
-        foreach (FindParticles r in allChild)
-        {
-            r.gameObject.SetActive(false);
-        }
-        
-
     }
 
     private void Update()
@@ -78,17 +72,20 @@ public class Bullet : MonoBehaviour
         {
             thisElement = Element.Fire;
         }
-        if (detector.GetComponent<Tower>().thisElement == Element.Electric)
-        {
-            thisElement = Element.Electric;
-        }
         if (detector.GetComponent<Tower>().thisElement == Element.Ice)
         {
             thisElement = Element.Ice;
+            
+        }
+        if (detector.GetComponent<Tower>().thisElement == Element.Electric)
+        {
+            thisElement = Element.Electric;
+            
         }
         if (detector.GetComponent<Tower>().thisElement == Element.Poison)
         {
             thisElement = Element.Poison;
+            
         }
     }
 
@@ -98,52 +95,16 @@ public class Bullet : MonoBehaviour
         if(other.tag == "Invader")
         {
             mr.enabled = false;
-            
-            foreach (FindParticles r in allChild)
-            {
-                r.gameObject.SetActive(true);
-                StartCoroutine(TurnOffParticles());
-            }
+
+            Instantiate(particles[0], transform.position, transform.rotation);
+            Instantiate(particles[1], transform.position, transform.rotation);
+            Instantiate(particles[2], transform.position, transform.rotation);
+            Instantiate(particles[3], transform.position, transform.rotation);
+
             Destroy(this.gameObject);
         }
     }
 
-    IEnumerator TurnOffParticles()
-    {
-        yield return new WaitForSeconds(.8f);
-        foreach (FindParticles r in allChild)
-        {
-            r.gameObject.SetActive(false);
-        }
-    }
 
-    /*
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.collider.GetComponent<Enemy>().hp > 0)
-        {
-
-                if (collision.collider.GetComponent<Enemy>().hp <= 0)
-                {
-                    detector.killCount++;
-                isDying = true;
-                }
-           
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.GetComponent<Enemy>().hp > 0)
-        {
-
-            if (collision.collider.GetComponent<Enemy>().hp <= 0)
-            {
-                detector.killCount++;
-                isDying = true;
-            }
-
-        }
-    }*/
 
 }

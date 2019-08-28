@@ -101,8 +101,7 @@ MonoBehaviour:
   bulletSpeed: 20
   bulletDamage: 0
   thisElement: 0
-  isDying: 0
-  allChild: []
+  rb: {fileID: 0}
   spawner: {fileID: 409928867699941176, guid: 86a04fc5a8790924782de76df9787756, type: 3}
 --- !u!65 &1938586419188377910
 BoxCollider:
@@ -144,14 +143,13 @@ GameObject:
   - component: {fileID: 2141157054729410722}
   - component: {fileID: 7247635401029388266}
   - component: {fileID: 5272862474131442484}
-  - component: {fileID: 7486254957902113375}
   m_Layer: 0
   m_Name: FireParticle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2141157054729410722
 Transform:
   m_ObjectHideFlags: 0
@@ -4953,18 +4951,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &7486254957902113375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218341450797109821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3984125490394926328
 GameObject:
   m_ObjectHideFlags: 0
@@ -5111,14 +5097,13 @@ GameObject:
   - component: {fileID: 1936971541654303233}
   - component: {fileID: 1020308430589544044}
   - component: {fileID: 638930274286984403}
-  - component: {fileID: 1732435149307873306}
   m_Layer: 0
   m_Name: FireParticle03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1936971541654303233
 Transform:
   m_ObjectHideFlags: 0
@@ -9920,18 +9905,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1732435149307873306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6319166650000943783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7336904264490600150
 GameObject:
   m_ObjectHideFlags: 0
@@ -9943,14 +9916,13 @@ GameObject:
   - component: {fileID: 6211639633370002487}
   - component: {fileID: 1235883345549782494}
   - component: {fileID: 2664209466105218240}
-  - component: {fileID: 6328558351964786016}
   m_Layer: 0
   m_Name: BeamOfLightParticle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6211639633370002487
 Transform:
   m_ObjectHideFlags: 0
@@ -14752,18 +14724,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &6328558351964786016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7336904264490600150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8356069573799489645
 GameObject:
   m_ObjectHideFlags: 0
@@ -14775,14 +14735,13 @@ GameObject:
   - component: {fileID: 1206718397474964643}
   - component: {fileID: 8616526549601913977}
   - component: {fileID: 8220802305550381913}
-  - component: {fileID: 3218201485838146443}
   m_Layer: 0
   m_Name: FireParticle02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1206718397474964643
 Transform:
   m_ObjectHideFlags: 0
@@ -19584,15 +19543,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3218201485838146443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8356069573799489645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e125ac0bdb1d041a154dad39798c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
