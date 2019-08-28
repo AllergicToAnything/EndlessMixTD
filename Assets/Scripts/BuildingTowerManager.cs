@@ -29,8 +29,17 @@ public class BuildingTowerManager : MonoBehaviour
     {
         WhenClick();
         goldTextOutput.text = "Gold : "+gold.ToString();
-        
-        
+
+        if(platform.towerStates == State.P)
+        {
+            platform.tower.LvlLabel(false);
+        }
+        if (platform.towerStates == State.B)
+        {
+            platform.tower.LvlLabel(true);
+        }
+
+
     }
 
     public void DoQuit()
@@ -143,6 +152,7 @@ public class BuildingTowerManager : MonoBehaviour
     {
         if (platform.towerStates == State.P)
         {
+           
             platform.elements = Element.Poison;
             currentTower = platform.tower;
             foreach (MaterialChanger mc in currentTower.allChild)

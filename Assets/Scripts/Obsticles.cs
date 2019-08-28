@@ -44,6 +44,7 @@ public class Obsticles : MonoBehaviour
             tower.platform.isOccupied = false;
             tower.icySlowSpeed = tower.initIcySlowSpeed;
             tower.poisonSlowSpeed = tower.initPoisonSlowSpeed;
+
             
             foreach (MaterialChanger mc in tower.allChild)
             {

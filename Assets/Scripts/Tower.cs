@@ -28,6 +28,7 @@ public class Tower : MonoBehaviour
     public float poisonDPS = .5f;
     public int poisonDPSLimitCount;
     public int fireDPSLimitCount;
+    public Text lvlLabel;
 
     public Transform shootingPos;
 
@@ -42,11 +43,13 @@ public class Tower : MonoBehaviour
         allChild = GetComponentsInChildren<MaterialChanger>();
         detector = GetComponent<Detector>();
         shootingPos = GetComponentInChildren<Empty>().gameObject.transform;
+        
     }
 
     private void Update()
     {
         AttackCondition();
+        lvlLabel.text = "Level " + towerLevel.ToString();
 
     }
 
@@ -136,7 +139,17 @@ public class Tower : MonoBehaviour
     }
 
 
+   
 
+    public void LvlLabel(bool onOff)
+    {
+        //if (lvlLabel.gameObject.activeSelf == true) { lvlLabel.gameObject.SetActive(false); }
+
+        lvlLabel.gameObject.SetActive(onOff);
+        Vector3 lvlPos = Camera.main.WorldToScreenPoint(transform.position);
+        lvlLabel.transform.position = lvlPos;
+
+    }
     // Upgrade to level 2
 
 

@@ -11,9 +11,7 @@ public class Bullet : MonoBehaviour
     public Element thisElement;
     MeshRenderer mr;
     public Rigidbody rb;
-    GameObject[] particles;
-   
-
+    public GameObject[] particles;
 
     public Spawner spawner;
 
@@ -23,6 +21,7 @@ public class Bullet : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         mr = this.GetComponent<MeshRenderer>();
         mr.enabled = false;
+
     }
 
     private void Update()
@@ -30,7 +29,7 @@ public class Bullet : MonoBehaviour
         if (target)
         {
             transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
-            Instantiate(particles[5], transform.position, transform.rotation);
+        
         }
         if (rb.velocity.y != 0) { mr.enabled = true; }
         if (rb.velocity.x != 0) { mr.enabled = true; }
@@ -96,12 +95,11 @@ public class Bullet : MonoBehaviour
         if(other.tag == "Invader")
         {
             mr.enabled = false;
-
-            Instantiate(particles[0], transform.position, transform.rotation);
-            Instantiate(particles[1], transform.position, transform.rotation);
-            Instantiate(particles[2], transform.position, transform.rotation);
-            Instantiate(particles[3], transform.position, transform.rotation);
-
+            foreach(GameObject r in particles)
+            {
+                Instantiate(r, transform.position, transform.rotation);
+            }
+           
             Destroy(this.gameObject);
         }
     }
