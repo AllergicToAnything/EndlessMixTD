@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     public Element thisElement;
     MeshRenderer mr;
     public Rigidbody rb;
-    GameObject[] particles; // 0 = Fire 1 = Ice 2 = Electric 3 = Poison
+    GameObject[] particles;
    
 
 
@@ -29,7 +29,8 @@ public class Bullet : MonoBehaviour
     {
         if (target)
         {
-            transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);            
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
+            Instantiate(particles[5], transform.position, transform.rotation);
         }
         if (rb.velocity.y != 0) { mr.enabled = true; }
         if (rb.velocity.x != 0) { mr.enabled = true; }
